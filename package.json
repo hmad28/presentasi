@@ -1,0 +1,13 @@
+{
+  "name": "solivate-pricing-master-2026",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build_deck.js"
+  },
+  "dependencies": {
+    "lucide-static": "^0.468.0",
+    "pptxgenjs": "^3.12.0",
+    "sharp": "^0.33.5"
+  }
+}
