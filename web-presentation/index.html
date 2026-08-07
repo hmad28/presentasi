@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#09111f" />
+    <meta name="theme-color" content="#101828" />
+    <meta name="description" content="Solivate Studio Pricing Master 2026 — presentasi dan katalog harga internal." />
     <link rel="icon" href="data:," />
     <title>Solivate Studio — Pricing Master 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,51 +17,60 @@
       <section id="slide" class="slide"></section>
     </main>
 
-    <div class="topbar">
-      <img class="brand" src="assets/solivate_logo.png" alt="Solivate Studio" />
+    <header class="topbar">
+      <button class="brand-button" id="goHome" type="button" aria-label="Ke slide pertama">
+        <img src="assets/solivate_logo.png" alt="Solivate Studio" />
+      </button>
       <div class="topbar-meta">
-        <span id="chapter">01 / SYSTEM</span>
-        <button id="catalogueOpen" type="button" aria-label="Buka katalog detail">KATALOG DETAIL</button>
-        <button id="fullscreen" type="button" aria-label="Layar penuh">LAYAR PENUH</button>
+        <span id="chapter">01 · DASAR</span>
+        <button class="utility-button" id="catalogueOpen" type="button">BUKA KATALOG</button>
+        <button class="utility-button ghost" id="fullscreen" type="button">LAYAR PENUH</button>
       </div>
-    </div>
+    </header>
 
-    <div class="hud">
+    <footer class="hud">
       <div class="progress-track"><span id="progress"></span></div>
       <div class="hud-row">
-        <div id="chapters" class="chapter-nav"></div>
+        <nav id="chapters" class="chapter-nav" aria-label="Bab presentasi"></nav>
         <div class="nav-controls" aria-label="Navigasi slide">
-          <button id="prev" type="button" aria-label="Slide sebelumnya"><span>←</span> KEMBALI</button>
-          <button id="next" type="button" aria-label="Slide berikutnya">LANJUT <span>→</span></button>
+          <button id="prev" type="button" aria-label="Slide sebelumnya">← <span>KEMBALI</span></button>
+          <button id="next" type="button" aria-label="Slide berikutnya"><span>LANJUT</span> →</button>
         </div>
-        <div id="counter" class="counter">01 / 16</div>
+        <div id="counter" class="counter">01 / 23</div>
       </div>
-    </div>
+    </footer>
 
-    <section id="catalogueOverlay" class="catalogue-overlay" aria-hidden="true" aria-label="Katalog detail paket">
-      <div class="catalogue-shell">
+    <section id="catalogueOverlay" class="catalogue-overlay" aria-hidden="true" aria-label="Katalog paket lengkap">
+      <div class="catalogue-page">
         <header class="catalogue-header">
-          <div>
-            <span class="catalogue-kicker">SOLIVATE STUDIO • INTERNAL REFERENCE</span>
-            <h2>Katalog Detail Paket</h2>
+          <div class="catalogue-title">
+            <span>REFERENSI INTERNAL · 64 PAKET</span>
+            <h2>Katalog lengkap</h2>
+            <p>Pilih paket untuk melihat outcome, cakupan, demo, dan pembeda tier.</p>
           </div>
-          <div class="catalogue-header-actions">
-            <span id="catalogueCount">64 PAKET</span>
-            <button id="catalogueClose" type="button" aria-label="Tutup katalog">TUTUP <b>×</b></button>
-          </div>
+          <button id="catalogueClose" class="catalogue-close" type="button" aria-label="Tutup katalog">TUTUP <b>×</b></button>
         </header>
-        <div class="catalogue-body">
-          <aside class="catalogue-sidebar">
-            <label class="catalogue-search">
-              <span>CARI PAKET</span>
-              <input id="catalogueSearch" type="search" placeholder="Contoh: ERP, QR, booking…" autocomplete="off" />
-            </label>
-            <div id="catalogueFilters" class="catalogue-filters" aria-label="Filter kategori"></div>
-            <div id="catalogueList" class="catalogue-list"></div>
-          </aside>
-          <main id="catalogueDetail" class="catalogue-detail" aria-live="polite"></main>
+
+        <div class="catalogue-tools">
+          <label class="catalogue-search">
+            <span>CARI</span>
+            <input id="catalogueSearch" type="search" placeholder="Nama paket, capability, atau demo…" autocomplete="off" />
+          </label>
+          <div id="catalogueFilters" class="catalogue-filters" aria-label="Filter kategori"></div>
         </div>
+
+        <div class="catalogue-summary">
+          <p id="catalogueCount">64 paket ditemukan</p>
+          <p>Klik satu paket untuk membuka detail.</p>
+        </div>
+        <div id="catalogueGrid" class="catalogue-grid"></div>
       </div>
+
+      <aside id="packageDrawer" class="package-drawer" aria-hidden="true" aria-label="Detail paket">
+        <button id="drawerClose" class="drawer-close" type="button" aria-label="Tutup detail paket">×</button>
+        <div id="drawerContent" class="drawer-content"></div>
+      </aside>
+      <button id="drawerBackdrop" class="drawer-backdrop" type="button" aria-label="Tutup detail paket"></button>
     </section>
 
     <div id="toast" class="toast" role="status"></div>
