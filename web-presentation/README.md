@@ -1,32 +1,24 @@
-# Solivate Studio — Pricing Master 2026
+# Solivate Studio — Pricing Master Simplified 2026
 
-Presentasi web 80 slide berbahasa Indonesia yang disusun dari `Solivate_Studio_Pricing_Master_Final_2026.docx.md`. Halaman 02 membagi katalog menjadi tiga kelompok utama: Personal & Non-Profit, UMKM & Commerce, dan Business & Enterprise. Masing-masing kelompok dipecah lagi menjadi subkategori, lalu satu halaman khusus untuk setiap paket.
+Presentasi browser 41 halaman yang mengikuti materi `Solivate_Studio_Pricing_Master_Simplified_2026.md`.
 
-Bagian contoh proyek memakai screenshot 16:9 dari 18 website Solivate yang benar-benar live dan dapat dibuka langsung. Screenshot hanya dipetakan ke paket yang capability-nya relevan. Paket tanpa contoh live yang benar-benar setara ditandai secara eksplisit sebagai belum tersedia.
+## Isi
 
-Tombol `BUKA KATALOG` membuka reference catalogue berisi 64 paket dalam 13 kategori. Paket di dalam slide juga dapat diklik untuk langsung membuka drawer detail berisi target pengguna, outcome, benchmark, cakupan representatif, demo acuan, pembeda, dan catatan internal. Katalog mendukung pencarian, filter kategori, serta bagian detail yang dapat dibuka atau ditutup.
+- 3 kategori utama.
+- 21 paket publik.
+- 1 halaman khusus per paket.
+- Harga, outcome, benefit, pembeda, dan contoh implementasi.
+- Panel detail untuk baseline, exclusions, optional/add-on, adjustment, workflow, dan custom trigger.
+- Client scale, complexity, formula quotation, add-ons, studi kasus, decision guide, serta konsolidasi paket lama.
 
-## Menjalankan presentasi
+## Menjalankan
 
-Cara paling sederhana: buka `index.html` di Chrome atau Edge.
-
-Jika browser membatasi asset lokal, jalankan dari folder `C:\Projects\presentasi`:
+Dari root repository:
 
 ```powershell
 python -m http.server 4173
 ```
 
-Kemudian buka:
+Kemudian buka `http://localhost:4173/web-presentation/`.
 
-`http://localhost:4173/web-presentation/`
-
-## Kontrol
-
-- Tombol `LANJUT`: slide berikutnya.
-- Tombol `KEMBALI`: slide sebelumnya.
-- `→`, `Page Down`, `Space`, atau `Enter`: berikutnya.
-- `←`, `Page Up`, atau `Backspace`: sebelumnya.
-- `Home` / `End`: awal / akhir.
-- `F`: fullscreen.
-
-Setiap slide juga memiliki deep link seperti `#slide-12`.
+Gunakan tombol pada layar untuk berpindah halaman. Keyboard `←`, `→`, `Page Up`, `Page Down`, `Space`, `Home`, `End`, dan `Esc` juga didukung.

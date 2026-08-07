@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#101828" />
-    <meta name="description" content="Solivate Studio Pricing Master 2026 — presentasi dan katalog harga internal." />
+    <meta name="theme-color" content="#f4f1e9" />
+    <meta name="description" content="Solivate Studio Pricing Master Simplified 2026 — katalog 21 paket dan framework quotation." />
     <link rel="icon" href="data:," />
-    <title>Solivate Studio — Pricing Master 2026</title>
+    <title>Solivate Studio — Pricing Master Simplified 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -18,62 +18,56 @@
     </main>
 
     <header class="topbar">
-      <button class="brand-button" id="goHome" type="button" aria-label="Ke slide pertama">
+      <button id="goHome" class="brand" type="button" aria-label="Kembali ke halaman pertama">
         <img src="assets/solivate_logo.png" alt="Solivate Studio" />
       </button>
-      <div class="topbar-meta">
-        <span id="chapter">01 · PATOKAN</span>
-        <button class="utility-button" id="catalogueOpen" type="button">BUKA KATALOG</button>
-        <button class="utility-button ghost" id="fullscreen" type="button">LAYAR PENUH</button>
+      <div class="topbar-center">
+        <span id="chapterNumber">00</span>
+        <strong id="chapterName">PEMBUKA</strong>
+      </div>
+      <div class="topbar-actions">
+        <button id="openCatalogue" type="button">21 PAKET</button>
+        <button id="fullscreen" class="icon-button" type="button" aria-label="Layar penuh">⛶</button>
       </div>
     </header>
 
-    <footer class="hud">
-      <div class="progress-track"><span id="progress"></span></div>
-      <div class="hud-row">
-        <nav id="chapters" class="chapter-nav" aria-label="Bab presentasi"></nav>
-        <div class="nav-controls" aria-label="Navigasi slide">
-          <button id="prev" type="button" aria-label="Slide sebelumnya">← <span>KEMBALI</span></button>
-          <button id="next" type="button" aria-label="Slide berikutnya"><span>LANJUT</span> →</button>
+    <footer class="bottom-bar">
+      <div class="progress"><span id="progress"></span></div>
+      <div class="bottom-content">
+        <nav id="chapterNav" class="chapter-nav" aria-label="Navigasi kategori"></nav>
+        <div class="slide-actions">
+          <button id="prev" type="button" aria-label="Halaman sebelumnya"><b>←</b><span>KEMBALI</span></button>
+          <span id="counter">01 / 39</span>
+          <button id="next" type="button" aria-label="Halaman berikutnya"><span>LANJUT</span><b>→</b></button>
         </div>
-        <div id="counter" class="counter">01 / 80</div>
       </div>
     </footer>
 
-    <section id="catalogueOverlay" class="catalogue-overlay" aria-hidden="true" aria-label="Katalog paket lengkap">
-      <div class="catalogue-page">
+    <section id="catalogue" class="catalogue" aria-hidden="true">
+      <div class="catalogue-shell">
         <header class="catalogue-header">
-          <div class="catalogue-title">
-            <span>REFERENSI INTERNAL · 64 PAKET</span>
-            <h2>Katalog lengkap</h2>
-            <p>Pilih paket untuk melihat outcome, cakupan, demo, dan pembeda tier.</p>
+          <div>
+            <span>PRICING MASTER SIMPLIFIED 2026</span>
+            <h2>21 paket. Lebih mudah dipilih.</h2>
           </div>
-          <button id="catalogueClose" class="catalogue-close" type="button" aria-label="Tutup katalog">TUTUP <b>×</b></button>
+          <button id="closeCatalogue" type="button">TUTUP <b>×</b></button>
         </header>
-
         <div class="catalogue-tools">
-          <label class="catalogue-search">
-            <span>CARI</span>
-            <input id="catalogueSearch" type="search" placeholder="Nama paket, capability, atau demo…" autocomplete="off" />
-          </label>
-          <div id="catalogueFilters" class="catalogue-filters" aria-label="Filter kategori"></div>
-        </div>
-
-        <div class="catalogue-summary">
-          <p id="catalogueCount">64 paket ditemukan</p>
-          <p>Klik satu paket untuk membuka detail.</p>
+          <label><span>CARI</span><input id="search" type="search" placeholder="Cari paket, kebutuhan, atau harga…" /></label>
+          <div id="filters" class="filters"></div>
         </div>
         <div id="catalogueGrid" class="catalogue-grid"></div>
       </div>
-
-      <aside id="packageDrawer" class="package-drawer" aria-hidden="true" aria-label="Detail paket">
-        <button id="drawerClose" class="drawer-close" type="button" aria-label="Tutup detail paket">×</button>
-        <div id="drawerContent" class="drawer-content"></div>
-      </aside>
-      <button id="drawerBackdrop" class="drawer-backdrop" type="button" aria-label="Tutup detail paket"></button>
     </section>
 
-    <div id="toast" class="toast" role="status"></div>
+    <section id="detailLayer" class="detail-layer" aria-hidden="true">
+      <button id="detailBackdrop" class="detail-backdrop" type="button" aria-label="Tutup detail"></button>
+      <article class="detail-panel">
+        <button id="closeDetail" class="close-detail" type="button" aria-label="Tutup detail">×</button>
+        <div id="detailContent"></div>
+      </article>
+    </section>
+
     <script src="catalogue-data.js"></script>
     <script src="live-examples.js"></script>
     <script src="presentation.js"></script>
