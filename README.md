@@ -28,6 +28,8 @@ Versi web dirancang sebagai presentasi layar penuh dengan **16 slide**, tombol n
 - Tombol `LANJUT` dan `KEMBALI` untuk berpindah slide.
 - Navigasi keyboard, fullscreen, progress bar, dan chapter navigator.
 - Deep link per slide, misalnya `#slide-12`.
+- Katalog interaktif berisi 64 paket lengkap dari Pricing Master.
+- Pencarian, filter kategori, detail paket yang dapat diklik, serta bagian scope yang bisa dibuka/tutup.
 - Katalog capability dari Website, CMS, Business, Operational, hingga Enterprise.
 - Materi pricing engine, discovery workflow, add-on, decision map, demo library, dan governance.
 - Tanpa framework atau proses build untuk versi web.
@@ -67,6 +69,7 @@ Root page akan mengarahkan browser ke deck utama di `/web-presentation/`.
 ├── web-presentation/
 │   ├── index.html                  # Presentation shell
 │   ├── presentation.js             # Konten 16 slide dan interaksi
+│   ├── catalogue-data.js            # Data lengkap 64 paket
 │   ├── styles.css                  # Visual system dan responsive layout
 │   └── assets/                     # Logo presentasi
 ├── pricing_master_source.md        # Materi sumber Pricing Master 2026

@@ -16,7 +16,11 @@ const base = (eyebrow, title, sub = '', body = '', dark = false, extra = '') => 
   html: `<p class="eyebrow">${eyebrow}</p><h1 class="headline ${extra}">${title}</h1>${sub ? `<p class="subhead">${sub}</p>` : ''}${body}`,
 });
 
-const priceRows = (items) => `<div class="price-rows">${items.map((x, i) => `<div class="price-row ${i === items.length - 1 ? 'last' : ''}"><div><b>${x[0]}</b><p>${x[2]}</p></div><strong>${x[1]}</strong></div>`).join('')}</div>`;
+const priceRows = (items) => `<div class="price-rows">${items.map((x, i) => {
+  const tag = x[3] ? 'button' : 'div';
+  const detail = x[3] ? ` type="button" data-package="${x[3]}" aria-label="Lihat detail ${x[0]}"` : '';
+  return `<${tag} class="price-row ${x[3] ? 'has-detail' : ''} ${i === items.length - 1 ? 'last' : ''}"${detail}><div><b>${x[0]}</b><p>${x[2]}</p></div><span class="price-action"><strong>${x[1]}</strong>${x[3] ? '<small>DETAIL ↗</small>' : ''}</span></${tag}>`;
+}).join('')}</div>`;
 
 const tierCard = (title, items, note = '', selected = false) => `<article class="card tier-card ${selected ? 'selected' : ''}"><div class="card-inner"><div class="tier-card-head"><h3>${title}</h3>${note ? `<span class="mini-chip">${note}</span>` : ''}</div>${priceRows(items)}</div></article>`;
 
@@ -62,74 +66,74 @@ const slides = [
   ].map((x, i) => `<div><span>${String(i + 1).padStart(2, '0')}</span><b>${x[0]}</b><p>${x[1]}</p></div>`).join('')}</div>`),
 
   base('PERSONAL, NON-PROFIT & UMKM', 'Entry website → business system.', 'Yang perlu dipahami adalah perubahan capability, bukan daftar fitur panjang.', `<div class="catalogue-split"><article class="catalogue-panel"><div class="panel-head"><div><span class="label-chip">PERSONAL</span><h3>Presensi → Publikasi</h3></div></div>${priceRows([
-    ['Basic', 'Rp299rb', 'Landing portfolio sederhana.'],
-    ['Standard', 'Rp499rb', 'Personal branding multipage.'],
-    ['Premium + CMS', 'Rp799rb', 'Dashboard untuk kelola portfolio/content.'],
-    ['Blog Pro', 'Rp999rb+', 'Publikasi, article CMS, search, dan SEO.'],
+    ['Basic', 'Rp299rb', 'Landing portfolio sederhana.', 'personal-basic'],
+    ['Standard', 'Rp499rb', 'Personal branding multipage.', 'personal-standard'],
+    ['Premium + CMS', 'Rp799rb', 'Dashboard untuk kelola portfolio/content.', 'personal-cms'],
+    ['Blog Pro', 'Rp999rb+', 'Publikasi, article CMS, search, dan SEO.', 'personal-blog'],
   ])}</article><article class="catalogue-panel selected-panel"><div class="panel-head"><div><span class="label-chip lime">UMKM</span><h3>Presensi → Operasi Internal</h3></div></div>${priceRows([
-    ['Basic', 'Rp499rb', 'Landing bisnis.'],
-    ['Standard', 'Rp749rb', 'Multipage company profile.'],
-    ['Premium + CMS', 'Rp999rb', 'Manajemen produk dan konten.'],
-    ['Business Lite', 'Rp2,25jt+', 'Database lead/customer.'],
-    ['Business', 'Rp2,99jt+', 'Customer, order, invoice, dan status.'],
-    ['Business Pro', 'Rp3,99jt+', 'Multi-admin, notifikasi, dokumen, laporan.'],
-    ['Operational', 'Rp4,99jt+', 'Staf, transaksi, workflow, role, reporting.'],
+    ['Basic', 'Rp499rb', 'Landing bisnis.', 'umkm-basic'],
+    ['Standard', 'Rp749rb', 'Multipage company profile.', 'umkm-standard'],
+    ['Premium + CMS', 'Rp999rb', 'Manajemen produk dan konten.', 'umkm-cms'],
+    ['Business Lite', 'Rp2,25jt+', 'Database lead/customer.', 'umkm-business-lite'],
+    ['Business', 'Rp2,99jt+', 'Customer, order, invoice, dan status.', 'umkm-business'],
+    ['Business Pro', 'Rp3,99jt+', 'Multi-admin, notifikasi, dokumen, laporan.', 'umkm-business-pro'],
+    ['Operational', 'Rp4,99jt+', 'Staf, transaksi, workflow, role, reporting.', 'umkm-operational'],
   ])}</article></div><div class="three-key-differences"><span><b>UMKM Premium</b>Website dengan CMS</span><span><b>UMKM Business</b>Business system</span><span><b>UMKM Operational</b>Internal operational software</span></div>`),
 
   base('EVENT & E-COMMERCE', 'Dari campaign menuju transaksi.', 'Database, QR, dan pembayaran mengubah kelas produk secara nyata.', `<div class="catalogue-split equal-panels"><article class="catalogue-panel"><div class="panel-head"><div><span class="label-chip">EVENT</span><h3>Landing → Database → QR → Commerce</h3></div></div>${priceRows([
-    ['Landing', 'Rp749rb+', 'Campaign, agenda, speaker, venue.'],
-    ['Event + CMS', 'Rp999rb+', 'Panitia mengelola konten sendiri.'],
-    ['Registration', 'Rp1,499jt+', 'Database peserta.'],
-    ['Registration + QR', 'Rp2,499jt+', 'QR unik, scanner, dan attendance.'],
-    ['Ticketing + QRIS', 'Rp3,499jt+', 'Checkout, payment, tiket, QR, laporan.'],
+    ['Landing', 'Rp749rb+', 'Campaign, agenda, speaker, venue.', 'event-landing'],
+    ['Event + CMS', 'Rp999rb+', 'Panitia mengelola konten sendiri.', 'event-cms'],
+    ['Registration', 'Rp1,499jt+', 'Database peserta.', 'event-registration'],
+    ['Registration + QR', 'Rp2,499jt+', 'QR unik, scanner, dan attendance.', 'event-qr'],
+    ['Ticketing + QRIS', 'Rp3,499jt+', 'Checkout, payment, tiket, QR, laporan.', 'event-ticketing'],
   ])}</article><article class="catalogue-panel selected-panel"><div class="panel-head"><div><span class="label-chip lime">E-COMMERCE</span><h3>Storefront → Operasi Retail</h3></div></div>${priceRows([
-    ['Starter', 'Rp2,499jt+', 'Storefront, cart, checkout, order.'],
-    ['Payment', 'Rp3,499jt+', 'Siklus pembayaran QRIS otomatis.'],
-    ['Business', 'Rp4,999jt+', 'Inventory, voucher, customer, shipping, report.'],
-    ['Advanced', 'Rp7,5jt+', 'Role, inventory, promo, return, API.'],
+    ['Starter', 'Rp2,499jt+', 'Storefront, cart, checkout, order.', 'commerce-starter'],
+    ['Payment', 'Rp3,499jt+', 'Siklus pembayaran QRIS otomatis.', 'commerce-payment'],
+    ['Business', 'Rp4,999jt+', 'Inventory, voucher, customer, shipping, report.', 'commerce-business'],
+    ['Advanced', 'Rp7,5jt+', 'Role, inventory, promo, return, API.', 'commerce-advanced'],
   ])}<div class="panel-warning">Multi-vendor bukan E-Commerce Advanced → masuk Marketplace.</div></article></div>`),
 
   base('POS • BOOKING • CRM', 'Tiga produk untuk tiga jenis operasi.', 'Pilih berdasarkan pekerjaan utama yang dilakukan pengguna setiap hari.', `<div class="grid cols-3 operation-cards">${[
-    ['POS', 'KASIR & STOK', [['Lite', 'Rp2,25jt+', 'Kasir, produk, transaksi, stok dasar.'], ['Business', 'Rp3,5jt+', 'Inventory, supplier, purchase, expense, customer.'], ['Pro', 'Rp5jt+', 'Multi-cashier, role, stock movement, payment/report.']]],
-    ['BOOKING', 'JADWAL & RESOURCE', [['Basic', 'Rp1,5jt+', 'Reservasi, availability, status.'], ['Business', 'Rp2,5jt+', 'Calendar, slot, customer, notifikasi/payment.'], ['Pro', 'Rp4jt+', 'Multi-resource, staf, ruang, allocation, rules.']]],
-    ['CRM', 'PIPELINE SALES', [['Lite', 'Rp2,5jt+', 'Lead, customer, pipeline.'], ['Business', 'Rp4jt+', 'Assignment, follow-up, quotation, activity.'], ['Pro', 'Rp6jt+', 'Automation, approval, integrasi, laporan lanjutan.']]],
+    ['POS', 'KASIR & STOK', [['Lite', 'Rp2,25jt+', 'Kasir, produk, transaksi, stok dasar.', 'pos-lite'], ['Business', 'Rp3,5jt+', 'Inventory, supplier, purchase, expense, customer.', 'pos-business'], ['Pro', 'Rp5jt+', 'Multi-cashier, role, stock movement, payment/report.', 'pos-pro']]],
+    ['BOOKING', 'JADWAL & RESOURCE', [['Basic', 'Rp1,5jt+', 'Reservasi, availability, status.', 'booking-basic'], ['Business', 'Rp2,5jt+', 'Calendar, slot, customer, notifikasi/payment.', 'booking-business'], ['Pro', 'Rp4jt+', 'Multi-resource, staf, ruang, allocation, rules.', 'booking-pro']]],
+    ['CRM', 'PIPELINE SALES', [['Lite', 'Rp2,5jt+', 'Lead, customer, pipeline.', 'crm-lite'], ['Business', 'Rp4jt+', 'Assignment, follow-up, quotation, activity.', 'crm-business'], ['Pro', 'Rp6jt+', 'Automation, approval, integrasi, laporan lanjutan.', 'crm-pro']]],
   ].map((x, i) => `<article class="card tier-card ${i === 2 ? 'selected' : ''}"><div class="card-inner"><div class="tier-card-head"><div><span class="card-kicker">${x[1]}</span><h3>${x[0]}</h3></div><span class="issue-no">0${i + 1}</span></div>${priceRows(x[2])}</div></article>`).join('')}</div>`),
 
   base('CORPORATE & OPERATIONAL', 'Business / Corporate floor > Rp2 juta.', 'Website yang mendukung bisnis berbeda dengan software yang menjadi alat kerja internal.', `<div class="catalogue-split equal-panels corporate-layout"><article class="catalogue-panel"><div class="panel-head"><div><span class="label-chip">CORPORATE</span><h3>Presensi → Fungsi Bisnis</h3></div></div>${priceRows([
-    ['Corporate Website', 'Rp2,5jt+', 'CMS, services, project, team, news, lead form.'],
-    ['Professional', 'Rp3,5jt+', 'Careers, newsroom, arsitektur konten dan UX.'],
-    ['Corporate Business', 'Rp5jt+', 'Database, request, quotation, dokumen, workflow.'],
+    ['Corporate Website', 'Rp2,5jt+', 'CMS, services, project, team, news, lead form.', 'corporate-website'],
+    ['Professional', 'Rp3,5jt+', 'Careers, newsroom, arsitektur konten dan UX.', 'corporate-professional'],
+    ['Corporate Business', 'Rp5jt+', 'Database, request, quotation, dokumen, workflow.', 'corporate-business'],
   ])}<p class="panel-definition"><b>Corporate Business</b> menghubungkan website dengan proses bisnis.</p></article><article class="catalogue-panel selected-panel"><div class="panel-head"><div><span class="label-chip lime">INTERNAL OPERATIONAL</span><h3>Workflow → Enterprise Operation</h3></div></div>${priceRows([
-    ['Operational Lite', 'Rp5jt+', '1–2 workflow.'],
-    ['Operational Standard', 'Rp7,5jt+', '3–5 modul.'],
-    ['Operational Pro', 'Rp10jt+', 'Lintas proses, approval, audit, laporan rinci.'],
-    ['Enterprise Operational', 'Rp15jt+ / Custom', 'Multi-branch, integrasi, security, SLA.'],
+    ['Operational Lite', 'Rp5jt+', '1–2 workflow.', 'corporate-ops-lite'],
+    ['Operational Standard', 'Rp7,5jt+', '3–5 modul.', 'corporate-ops-standard'],
+    ['Operational Pro', 'Rp10jt+', 'Lintas proses, approval, audit, laporan rinci.', 'corporate-ops-pro'],
+    ['Enterprise Operational', 'Rp15jt+ / Custom', 'Multi-branch, integrasi, security, SLA.', 'corporate-enterprise-ops'],
   ])}<p class="panel-definition"><b>Operational System</b> menjadi alat kerja internal perusahaan.</p></article></div>`),
 
   base('GOVERNMENT & HEALTHCARE', 'Dua sektor dengan requirement dan risiko khusus.', 'Harga final wajib mempertimbangkan stakeholder, compliance, keamanan, dan dampak operasional.', `<div class="catalogue-split equal-panels risk-sectors"><article class="catalogue-panel government-panel"><div class="panel-head"><div><span class="label-chip">GOVERNMENT • FLOOR Rp5JT</span><h3>Informasi Publik → Layanan</h3></div></div>${priceRows([
-    ['Government Website', 'Rp5jt+', 'Portal informasi dan CMS.'],
-    ['Professional', 'Rp7,5jt+', 'PPID, dokumen, complaint, multi-admin.'],
-    ['Digital Public Service', 'Rp10jt+', 'Submission, dokumen, tracking, workflow staf.'],
-    ['Integrated', 'Rp15jt+', 'Multi-unit, approval, integrasi, audit.'],
-    ['Enterprise', 'Custom', 'Sistem publik strategis.'],
+    ['Government Website', 'Rp5jt+', 'Portal informasi dan CMS.', 'government-website'],
+    ['Professional', 'Rp7,5jt+', 'PPID, dokumen, complaint, multi-admin.', 'government-professional'],
+    ['Digital Public Service', 'Rp10jt+', 'Submission, dokumen, tracking, workflow staf.', 'government-service'],
+    ['Integrated', 'Rp15jt+', 'Multi-unit, approval, integrasi, audit.', 'government-integrated'],
+    ['Enterprise', 'Custom', 'Sistem publik strategis.', 'government-enterprise'],
   ])}<p class="sector-note">Guardrail mencakup pengadaan, accessibility, compliance, security, support, dan stakeholder.</p></article><article class="catalogue-panel healthcare-panel"><div class="panel-head"><div><span class="label-chip risk-chip">HEALTHCARE</span><h3>Presensi Klinik → Sistem Kesehatan</h3></div></div>${priceRows([
-    ['Clinic Website', 'Rp2,5jt+', 'Profil, dokter, layanan, CMS.'],
-    ['Clinic Booking', 'Rp3,5jt+', 'Jadwal dan appointment.'],
-    ['Clinic Management', 'Rp7,5jt+', 'Pasien, visit, billing, stok, laporan.'],
-    ['Healthcare System', 'Rp15jt+', 'Multi-workflow, integration, security.'],
-    ['Hospital / Enterprise', 'Custom', 'Multi-department dan SLA.'],
+    ['Clinic Website', 'Rp2,5jt+', 'Profil, dokter, layanan, CMS.', 'clinic-website'],
+    ['Clinic Booking', 'Rp3,5jt+', 'Jadwal dan appointment.', 'clinic-booking'],
+    ['Clinic Management', 'Rp7,5jt+', 'Pasien, visit, billing, stok, laporan.', 'clinic-management'],
+    ['Healthcare System', 'Rp15jt+', 'Multi-workflow, integration, security.', 'healthcare-system'],
+    ['Hospital / Enterprise', 'Custom', 'Multi-department dan SLA.', 'hospital-enterprise'],
   ])}<p class="sector-note risk">Rekam medis, SATUSEHAT/BPJS, lab, farmasi lanjutan, atau data sensitif → discovery + security review + custom quotation.</p></article></div>`),
 
   {
     dark: true,
     html: `<p class="eyebrow">CUSTOM SOFTWARE • ERP • SAAS • MARKETPLACE</p><h1 class="headline">Ini bukan “website dengan banyak fitur”.</h1><p class="subhead">Arsitektur, model data, authentication, tenancy/vendor logic, QA, security, dan maintainability-nya berbeda kelas.</p><div class="premium-product-grid">${[
-      ['CUSTOM SOFTWARE', 'Rp5jt+', 'Satu aplikasi khusus', 'Database • dashboard • workflow'],
-      ['ERP LITE', 'Rp10jt+', '3–5 modul terintegrasi', 'Master data • role • approval • report'],
-      ['ERP BUSINESS', 'Rp15jt+', '5+ modul lintas proses', 'Cross-module • approval • reporting'],
-      ['SAAS PLATFORM', 'Rp12,5jt+', 'Produk multi-account', 'Auth • tenant • subscription • super admin'],
-      ['MARKETPLACE', 'Rp15jt+', 'Buyer + vendor', 'Listing • order • commission/payment'],
-      ['ENTERPRISE PLATFORM', 'Rp25jt+ / CUSTOM', 'Mission-critical platform', 'Multi-branch • audit • API • security • SLA'],
-    ].map((x, i) => `<article class="premium-product ${i === 5 ? 'featured' : ''}"><span>${x[0]}</span><strong>${x[1]}</strong><h3>${x[2]}</h3><p>${x[3]}</p></article>`).join('')}</div><div class="architecture-strip"><span>ARCHITECTURE</span><span>AUTHENTICATION</span><span>DATA MODEL</span><span>GOVERNANCE</span><span>MAINTAINABILITY</span></div>`,
+      ['CUSTOM SOFTWARE', 'Rp5jt+', 'Satu aplikasi khusus', 'Database • dashboard • workflow', 'custom-software'],
+      ['ERP LITE', 'Rp10jt+', '3–5 modul terintegrasi', 'Master data • role • approval • report', 'erp-lite'],
+      ['ERP BUSINESS', 'Rp15jt+', '5+ modul lintas proses', 'Cross-module • approval • reporting', 'erp-business'],
+      ['SAAS PLATFORM', 'Rp12,5jt+', 'Produk multi-account', 'Auth • tenant • subscription • super admin', 'saas-platform'],
+      ['MARKETPLACE', 'Rp15jt+', 'Buyer + vendor', 'Listing • order • commission/payment', 'marketplace'],
+      ['ENTERPRISE PLATFORM', 'Rp25jt+ / CUSTOM', 'Mission-critical platform', 'Multi-branch • audit • API • security • SLA', 'enterprise-platform'],
+    ].map((x, i) => `<button type="button" class="premium-product ${i === 5 ? 'featured' : ''}" data-package="${x[4]}" aria-label="Lihat detail ${x[0]}"><span>${x[0]}</span><strong>${x[1]}</strong><h3>${x[2]}</h3><p>${x[3]}</p><small>LIHAT DETAIL ↗</small></button>`).join('')}</div><div class="architecture-strip"><span>ARCHITECTURE</span><span>AUTHENTICATION</span><span>DATA MODEL</span><span>GOVERNANCE</span><span>MAINTAINABILITY</span></div>`,
   },
 
   base('TAMBAHAN & PENYESUAIAN CAKUPAN', 'Tambahkan capability—bukan menyembunyikan proyek besar.', 'Angka berikut adalah guidance internal untuk estimasi awal, bukan harga publik tetap.', `<div class="addon-compact-grid">${[
@@ -210,6 +214,89 @@ function prev() {
   else showToast('AWAL PRESENTASI');
 }
 
+const catalogue = window.SOLIVATE_CATALOGUE || [];
+let activeCatalogueCategory = 'Semua';
+let catalogueQuery = '';
+let selectedPackageId = catalogue[0]?.id || '';
+
+function filteredCatalogue() {
+  const query = catalogueQuery.trim().toLowerCase();
+  return catalogue.filter((item) => {
+    const categoryMatch = activeCatalogueCategory === 'Semua' || item.kategori === activeCatalogueCategory;
+    const searchText = [item.nama, item.kategori, item.harga, item.cocok, item.hasil, item.demo, item.pembeda, ...item.termasuk].join(' ').toLowerCase();
+    return categoryMatch && (!query || searchText.includes(query));
+  });
+}
+
+function renderCatalogueFilters() {
+  const categories = ['Semua', ...new Set(catalogue.map((item) => item.kategori))];
+  $('#catalogueFilters').innerHTML = categories.map((category) => `<button type="button" class="catalogue-filter ${category === activeCatalogueCategory ? 'active' : ''}" data-category="${category}">${category}</button>`).join('');
+}
+
+function renderCatalogueList() {
+  const items = filteredCatalogue();
+  $('#catalogueCount').textContent = `${items.length} PAKET`;
+  if (!items.some((item) => item.id === selectedPackageId)) selectedPackageId = items[0]?.id || '';
+  $('#catalogueList').innerHTML = items.length ? items.map((item) => `<button type="button" class="catalogue-list-item ${item.id === selectedPackageId ? 'active' : ''}" data-catalogue-select="${item.id}"><span>${item.kategori}</span><b>${item.nama}</b><strong>${item.harga}</strong><i>↗</i></button>`).join('') : '<div class="catalogue-empty">Tidak ada paket yang cocok dengan pencarian.</div>';
+  renderCatalogueDetail(selectedPackageId);
+}
+
+function renderCatalogueDetail(id) {
+  const item = catalogue.find((entry) => entry.id === id);
+  if (!item) {
+    $('#catalogueDetail').innerHTML = '<div class="catalogue-empty-detail"><b>Paket tidak ditemukan.</b><p>Coba ubah kata kunci atau kategori.</p></div>';
+    return;
+  }
+  selectedPackageId = item.id;
+  [...document.querySelectorAll('[data-catalogue-select]')].forEach((node) => node.classList.toggle('active', node.dataset.catalogueSelect === item.id));
+  $('#catalogueDetail').innerHTML = `
+    <div class="catalogue-detail-hero">
+      <div><span class="label-chip">${item.kategori}</span><h3>${item.nama}</h3><p>Benchmark internal untuk cakupan representatif.</p></div>
+      <strong>${item.harga}</strong>
+    </div>
+    <div class="catalogue-detail-summary">
+      <article><span>COCOK UNTUK</span><p>${item.cocok}</p></article>
+      <article><span>HASIL UTAMA</span><p>${item.hasil}</p></article>
+    </div>
+    <div class="catalogue-accordions">
+      <details open>
+        <summary><span>Cakupan representatif</span><b>${item.termasuk.length} ITEM</b></summary>
+        <ul>${item.termasuk.map((feature) => `<li>${feature}</li>`).join('')}</ul>
+      </details>
+      <details open>
+        <summary><span>Demo acuan</span><b>REFERENCE</b></summary>
+        <div class="catalogue-demo"><i>DEMO</i><strong>${item.demo}</strong><p>Gunakan demo ini untuk menjelaskan capability paket secara konkret saat meeting.</p></div>
+      </details>
+      <details open>
+        <summary><span>Pembeda utama</span><b>UPGRADE LOGIC</b></summary>
+        <p class="catalogue-difference">${item.pembeda}</p>
+      </details>
+      ${item.catatan ? `<details><summary><span>Catatan internal</span><b>PERHATIAN</b></summary><p class="catalogue-note">${item.catatan}</p></details>` : ''}
+    </div>
+    <footer class="catalogue-detail-footer"><span>BENCHMARK ≠ PENAWARAN FINAL</span><p>Harga aktual mengikuti cakupan, kompleksitas, integrasi, timeline, risiko, dan dukungan setelah discovery.</p></footer>`;
+}
+
+function openCatalogue(packageId = '') {
+  if (packageId && catalogue.some((item) => item.id === packageId)) {
+    selectedPackageId = packageId;
+    activeCatalogueCategory = 'Semua';
+    catalogueQuery = '';
+    $('#catalogueSearch').value = '';
+  }
+  renderCatalogueFilters();
+  renderCatalogueList();
+  $('#catalogueOverlay').classList.add('open');
+  $('#catalogueOverlay').setAttribute('aria-hidden', 'false');
+  document.body.classList.add('catalogue-open');
+  setTimeout(() => $('#catalogueSearch').focus(), 260);
+}
+
+function closeCatalogue() {
+  $('#catalogueOverlay').classList.remove('open');
+  $('#catalogueOverlay').setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('catalogue-open');
+}
+
 chapterDefs.forEach((chapter) => {
   const node = document.createElement('span');
   node.textContent = `${chapter.id} ${chapter.label}`;
@@ -218,8 +305,43 @@ chapterDefs.forEach((chapter) => {
 
 $('#prev').addEventListener('click', prev);
 $('#next').addEventListener('click', next);
+$('#catalogueOpen').addEventListener('click', () => openCatalogue());
+$('#catalogueClose').addEventListener('click', closeCatalogue);
+
+$('#catalogueFilters').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-category]');
+  if (!button) return;
+  activeCatalogueCategory = button.dataset.category;
+  renderCatalogueFilters();
+  renderCatalogueList();
+});
+
+$('#catalogueList').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-catalogue-select]');
+  if (!button) return;
+  renderCatalogueDetail(button.dataset.catalogueSelect);
+});
+
+$('#catalogueSearch').addEventListener('input', (event) => {
+  catalogueQuery = event.target.value;
+  renderCatalogueList();
+});
+
+$('#catalogueOverlay').addEventListener('mousedown', (event) => {
+  if (event.target === $('#catalogueOverlay')) closeCatalogue();
+});
+
+document.addEventListener('click', (event) => {
+  const trigger = event.target.closest('[data-package]');
+  if (!trigger) return;
+  openCatalogue(trigger.dataset.package);
+});
 
 document.addEventListener('keydown', (event) => {
+  if ($('#catalogueOverlay').classList.contains('open')) {
+    if (event.key === 'Escape') closeCatalogue();
+    return;
+  }
   if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(event.key)) { event.preventDefault(); next(); }
   if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) { event.preventDefault(); prev(); }
   if (event.key.toLowerCase() === 'f') $('#fullscreen').click();

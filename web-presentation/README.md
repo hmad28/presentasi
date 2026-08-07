@@ -2,6 +2,8 @@
 
 Presentasi web 16 slide berbahasa Indonesia yang disusun dari `Solivate_Studio_Pricing_Master_Final_2026.docx.md`. Deck diringkas sebagai alur meeting internal: alasan revisi, kerangka harga, katalog kategori, panduan sales, perubahan benchmark, dan strategi demo.
 
+Tombol `KATALOG DETAIL` membuka reference catalogue berisi 64 paket. Paket pada slide 7–12 juga dapat diklik langsung untuk membuka detail cocok untuk, hasil utama, cakupan representatif, demo acuan, pembeda, dan catatan internal. Katalog mendukung pencarian, filter kategori, serta accordion yang dapat dibuka atau ditutup.
+
 ## Menjalankan presentasi
 
 Cara paling sederhana: buka `index.html` di Chrome atau Edge.
