@@ -1,6 +1,6 @@
 # Solivate Studio — Pricing Master 2026
 
-Presentasi web 18 slide berbahasa Indonesia yang disusun dari `Solivate_Studio_Pricing_Master_Final_2026.docx.md`. Kategori padat dipisahkan ke slide tersendiri agar angka benchmark, perbedaan, benefit, dan contoh proyek tetap mudah dibaca saat meeting.
+Presentasi web 79 slide berbahasa Indonesia yang disusun dari `Solivate_Studio_Pricing_Master_Final_2026.docx.md`. Alurnya berurutan per kategori: satu halaman pembuka kategori, lalu satu halaman khusus untuk setiap paket. Harga, benefit, pembeda, scope, dan contoh proyek tidak lagi dicampur dalam satu comparison slide.
 
 Tombol `BUKA KATALOG` membuka reference catalogue berisi 64 paket dalam 13 kategori. Paket di dalam slide juga dapat diklik untuk langsung membuka drawer detail berisi target pengguna, outcome, benchmark, cakupan representatif, demo acuan, pembeda, dan catatan internal. Katalog mendukung pencarian, filter kategori, serta bagian detail yang dapat dibuka atau ditutup.
 
