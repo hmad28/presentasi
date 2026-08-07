@@ -5,7 +5,7 @@
 <h1 align="center">Solivate Studio — Pricing Master 2026</h1>
 
 <p align="center">
-  Premium interactive product and pricing catalogue untuk kebutuhan internal Solivate Studio.
+  Katalog produk dan sistem harga interaktif premium untuk kebutuhan internal Solivate Studio.
 </p>
 
 <p align="center">
