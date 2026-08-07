@@ -79,7 +79,8 @@ function packageSlide(item, meta, packageIndex, packageTotal) {
 
       <section class="scope-block ${featureClass}">
         <header><span>SCOPE REPRESENTATIF</span><b>${item.termasuk.length} CAPABILITY</b></header>
-        <ul>${item.termasuk.map((feature) => `<li>${feature}</li>`).join('')}</ul>
+        <ul>${item.termasuk.slice(0, 5).map((feature) => `<li>${feature}</li>`).join('')}</ul>
+        ${item.termasuk.length > 5 ? `<button class="scope-more" type="button" data-package="${item.id}">+${item.termasuk.length - 5} CAPABILITY LAINNYA · BUKA DETAIL ↗</button>` : ''}
       </section>
 
       <footer class="demo-strip">
