@@ -1,30 +1,36 @@
 const $ = (query) => document.querySelector(query);
 const catalogue = window.SOLIVATE_CATALOGUE || [];
 const byId = Object.fromEntries(catalogue.map((item) => [item.id, item]));
+const liveExamples = window.SOLIVATE_LIVE_EXAMPLES || {};
 
 const categoryMeta = [
-  { key: 'Personal', title: 'Personal', major: 'PRESENCE', accent: 'blue', statement: 'Membangun personal brand dari satu landing page hingga sistem publikasi mandiri.', progression: 'Landing → Multipage → CMS → Publication' },
-  { key: 'Wedding', title: 'Wedding', major: 'PRESENCE', accent: 'coral', statement: 'Mengubah undangan digital menjadi sistem pengelolaan dan check-in tamu.', progression: 'Invitation → Interaction → RSVP → QR → Guest Operations' },
-  { key: 'Institusi', title: 'Institution', major: 'PRESENCE', accent: 'green', statement: 'Dari profil lembaga hingga workflow operasional multi-role.', progression: 'Landing → Profile → CMS → Interaction → Operations' },
-  { key: 'UMKM', title: 'UMKM', major: 'PRESENCE', accent: 'lime', statement: 'Jalur upgrade lengkap dari website informasi menuju software operasional harian.', progression: 'Landing → Multipage → CMS → Lead → Order → Team → Operations' },
-  { key: 'Event', title: 'Event', major: 'OPERATIONS', accent: 'coral', statement: 'Dari campaign event hingga ticketing, pembayaran, dan attendance.', progression: 'Campaign → Content → Registration → QR → Ticketing' },
-  { key: 'E-Commerce', title: 'E-Commerce', major: 'OPERATIONS', accent: 'lime', statement: 'Dari storefront sederhana menuju retail operation yang terintegrasi.', progression: 'Storefront → Payment → Commerce Operations → Advanced Retail' },
-  { key: 'POS', title: 'Point of Sale', major: 'OPERATIONS', accent: 'blue', statement: 'Sistem kasir yang tumbuh dari transaksi dasar menuju kontrol inventory dan multi-cashier.', progression: 'Cashier → Inventory → Multi-Cashier' },
-  { key: 'Booking', title: 'Booking', major: 'OPERATIONS', accent: 'green', statement: 'Mengelola reservasi, slot waktu, kapasitas, dan banyak resource.', progression: 'Reservation → Slots → Multi-Resource' },
-  { key: 'CRM', title: 'CRM', major: 'OPERATIONS', accent: 'coral', statement: 'Mengelola lead dan pipeline sales dari pencatatan dasar hingga automation.', progression: 'Lead → Team Sales → Automation' },
-  { key: 'Corporate', title: 'Corporate', major: 'SECTOR', accent: 'blue', statement: 'Memisahkan corporate presence, business function, dan internal operational software.', progression: 'Presence → Professional Content → Business Function → Operations' },
-  { key: 'Government', title: 'Government', major: 'SECTOR', accent: 'lime', statement: 'Portal publik dan aplikasi layanan dengan floor, governance, dan risiko khusus.', progression: 'Information → Public Interaction → Digital Service → Integrated' },
-  { key: 'Healthcare', title: 'Healthcare', major: 'SECTOR', accent: 'coral', statement: 'Produk digital kesehatan dengan peningkatan sensitivity, workflow, dan security review.', progression: 'Presence → Booking → Clinic Operations → Healthcare System' },
-  { key: 'Platform', title: 'Product Platforms', major: 'PLATFORM', accent: 'lime', statement: 'Software custom, ERP, SaaS, Marketplace, dan Enterprise dengan arsitektur kelas produk.', progression: 'Custom App → ERP / SaaS / Marketplace → Enterprise' },
+  { key: 'Personal', title: 'Personal', major: 'PERSONAL', accent: 'blue', statement: 'Membangun personal brand dari satu landing page hingga sistem publikasi mandiri.', progression: 'Landing → Multipage → CMS → Publication' },
+  { key: 'Wedding', title: 'Wedding', major: 'PERSONAL', accent: 'coral', statement: 'Mengubah undangan digital menjadi sistem pengelolaan dan check-in tamu.', progression: 'Invitation → Interaction → RSVP → QR → Guest Operations' },
+  { key: 'Institusi', title: 'Institution', major: 'PERSONAL', accent: 'green', statement: 'Dari profil lembaga hingga workflow operasional multi-role.', progression: 'Landing → Profile → CMS → Interaction → Operations' },
+  { key: 'UMKM', title: 'UMKM', major: 'UMKM', accent: 'lime', statement: 'Jalur upgrade lengkap dari website informasi menuju software operasional harian.', progression: 'Landing → Multipage → CMS → Lead → Order → Team → Operations' },
+  { key: 'Event', title: 'Event', major: 'UMKM', accent: 'coral', statement: 'Dari campaign event hingga ticketing, pembayaran, dan attendance.', progression: 'Campaign → Content → Registration → QR → Ticketing' },
+  { key: 'E-Commerce', title: 'E-Commerce', major: 'UMKM', accent: 'lime', statement: 'Dari storefront sederhana menuju retail operation yang terintegrasi.', progression: 'Storefront → Payment → Commerce Operations → Advanced Retail' },
+  { key: 'POS', title: 'Point of Sale', major: 'UMKM', accent: 'blue', statement: 'Sistem kasir yang tumbuh dari transaksi dasar menuju kontrol inventory dan multi-cashier.', progression: 'Cashier → Inventory → Multi-Cashier' },
+  { key: 'Booking', title: 'Booking', major: 'UMKM', accent: 'green', statement: 'Mengelola reservasi, slot waktu, kapasitas, dan banyak resource.', progression: 'Reservation → Slots → Multi-Resource' },
+  { key: 'CRM', title: 'CRM', major: 'UMKM', accent: 'coral', statement: 'Mengelola lead dan pipeline sales dari pencatatan dasar hingga automation.', progression: 'Lead → Team Sales → Automation' },
+  { key: 'Corporate', title: 'Corporate', major: 'ENTERPRISE', accent: 'blue', statement: 'Memisahkan corporate presence, business function, dan internal operational software.', progression: 'Presence → Professional Content → Business Function → Operations' },
+  { key: 'Government', title: 'Government', major: 'ENTERPRISE', accent: 'lime', statement: 'Portal publik dan aplikasi layanan dengan floor, governance, dan risiko khusus.', progression: 'Information → Public Interaction → Digital Service → Integrated' },
+  { key: 'Healthcare', title: 'Healthcare', major: 'ENTERPRISE', accent: 'coral', statement: 'Produk digital kesehatan dengan peningkatan sensitivity, workflow, dan security review.', progression: 'Presence → Booking → Clinic Operations → Healthcare System' },
+  { key: 'Platform', title: 'Product Platforms', major: 'ENTERPRISE', accent: 'lime', statement: 'Software custom, ERP, SaaS, Marketplace, dan Enterprise dengan arsitektur kelas produk.', progression: 'Custom App → ERP / SaaS / Marketplace → Enterprise' },
 ];
 
 const majorLabels = {
   OVERVIEW: 'OVERVIEW',
-  PRESENCE: 'DIGITAL PRESENCE',
-  OPERATIONS: 'BUSINESS & OPERATIONS',
-  SECTOR: 'CORPORATE & SECTOR',
-  PLATFORM: 'PRODUCT PLATFORMS',
+  PERSONAL: 'PERSONAL & NON-PROFIT',
+  UMKM: 'UMKM & COMMERCE',
+  ENTERPRISE: 'BUSINESS & ENTERPRISE',
 };
+
+const catalogueGroups = [
+  { key: 'PERSONAL', number: '01', title: 'Personal & Non-Profit' },
+  { key: 'UMKM', number: '02', title: 'UMKM & Commerce' },
+  { key: 'ENTERPRISE', number: '03', title: 'Business & Enterprise' },
+];
 
 function categorySlide(meta, items, categoryNumber) {
   return {
@@ -48,6 +54,10 @@ function categorySlide(meta, items, categoryNumber) {
 
 function packageSlide(item, meta, packageIndex, packageTotal) {
   const featureClass = item.termasuk.length > 7 ? 'many-features' : '';
+  const live = liveExamples[item.id];
+  const preview = live
+    ? `<figure class="demo-visual is-live"><a href="${live.url}" target="_blank" rel="noopener"><img src="${live.image}" alt="Screenshot live ${live.title}" /></a><figcaption><span>WEBSITE LIVE</span><b>${live.title}</b><a href="${live.url}" target="_blank" rel="noopener">BUKA ↗</a></figcaption></figure>`
+    : `<div class="demo-unavailable"><span>DEMO LIVE</span><strong>Belum tersedia.</strong><p>Belum ada contoh Solivate yang setara untuk capability paket ini.</p><small>ROADMAP: ${item.demo}</small></div>`;
   return {
     type: 'package', major: meta.major, accent: meta.accent,
     html: `<div class="package-spotlight accent-${meta.accent}">
@@ -64,10 +74,7 @@ function packageSlide(item, meta, packageIndex, packageTotal) {
       </div>
 
       <div class="package-explanation">
-        <figure class="demo-visual">
-          <img src="assets/demos/${item.id}.png" alt="Concept preview ${item.demo}" />
-          <figcaption><span>CONCEPT PREVIEW · BUKAN WEBSITE PIHAK KETIGA</span></figcaption>
-        </figure>
+        ${preview}
         <section class="benefit-block">
           <span>BENEFIT UTAMA</span>
           <h2>${item.hasil}</h2>
@@ -85,9 +92,9 @@ function packageSlide(item, meta, packageIndex, packageTotal) {
       </section>
 
       <footer class="demo-strip">
-        <span>CONTOH PROYEK / DEMO</span>
-        <strong>${item.demo}</strong>
-        ${item.catatan ? `<p>${item.catatan}</p>` : ''}
+        <span>${live ? 'CONTOH WEBSITE LIVE' : 'STATUS DEMO'}</span>
+        <strong>${live ? live.title : 'Belum ada demo live yang setara'}</strong>
+        <p>${live ? `${live.capability} · ${live.url.replace(/^https?:\/\//, '')}` : `Roadmap internal: ${item.demo}`}</p>
       </footer>
     </div>`,
   };
@@ -109,15 +116,17 @@ function tableOfContentsSlide() {
         <span>02 · NAVIGASI UTAMA</span>
         <h1>Daftar<br>Isi.</h1>
         <p>Pilih kategori untuk langsung menuju breakdown harga dan paket.</p>
-        <div class="toc-summary"><b>13</b><span>KATEGORI</span><b>64</b><span>PAKET</span></div>
+        <div class="toc-summary"><b>3</b><span>KELOMPOK</span><b>13</b><span>SUBKATEGORI</span><b>64</b><span>PAKET</span></div>
       </section>
-      <nav class="toc-grid" aria-label="Daftar kategori">
-        ${entries.map((entry) => `<button type="button" data-jump="${entry.startPage - 1}">
-          <span>${String(entry.index).padStart(2, '0')}</span>
-          <strong>${entry.title}</strong>
-          <small>${entry.packageCount} paket</small>
-          <b>HAL. ${String(entry.startPage).padStart(2, '0')} ↗</b>
-        </button>`).join('')}
+      <nav class="toc-groups" aria-label="Daftar kategori">
+        ${catalogueGroups.map((group) => `<section class="toc-group">
+          <header><span>${group.number}</span><h2>${group.title}</h2></header>
+          ${entries.filter((entry) => entry.major === group.key).map((entry) => `<button type="button" data-jump="${entry.startPage - 1}">
+            <strong>${entry.title}</strong>
+            <small>${entry.packageCount} paket</small>
+            <b>HAL. ${String(entry.startPage).padStart(2, '0')} ↗</b>
+          </button>`).join('')}
+        </section>`).join('')}
       </nav>
     </div>`,
   };
@@ -142,7 +151,7 @@ slides.push({
   html: `<div class="closing-sequential"><span>SOLIVATE STUDIO · PRICING MASTER 2026</span><h1>64 paket.<br><em>Tanpa campur.</em><br>Tanpa pengulangan.</h1><p>Benchmark adalah titik awal. Discovery menentukan quotation final.</p><button type="button" data-open-catalogue>BUKA KATALOG PENCARIAN →</button></div>`,
 });
 
-const majorOrder = ['OVERVIEW', 'PRESENCE', 'OPERATIONS', 'SECTOR', 'PLATFORM'];
+const majorOrder = ['OVERVIEW', 'PERSONAL', 'UMKM', 'ENTERPRISE'];
 const chapters = majorOrder.map((major, index) => {
   const first = slides.findIndex((slide) => slide.major === major);
   const last = slides.reduce((value, slide, slideIndex) => slide.major === major ? slideIndex : value, first);
@@ -193,16 +202,26 @@ function filteredCatalogue() {
   const query = $('#catalogueSearch').value.trim().toLowerCase();
   return catalogue.filter((item) => (activeCategory === 'Semua' || item.kategori === activeCategory) && (!query || [item.nama,item.kategori,item.harga,item.cocok,item.hasil,item.demo,item.pembeda,...item.termasuk].join(' ').toLowerCase().includes(query)));
 }
+function cataloguePreview(item) {
+  const live = liveExamples[item.id];
+  return live
+    ? `<img src="${live.image}" alt="Screenshot ${live.title}" loading="lazy" />`
+    : `<div class="catalogue-no-demo"><span>DEMO LIVE</span><b>Belum tersedia</b></div>`;
+}
 function renderCatalogue() {
   const items = filteredCatalogue();
   $('#catalogueCount').textContent = `${items.length} paket ditemukan`;
-  $('#catalogueGrid').innerHTML = items.length ? items.map((item) => `<button class="catalogue-card" type="button" data-catalogue-id="${item.id}"><img src="assets/demos/${item.id}.png" alt="" loading="lazy" /><span>${item.kategori}</span><h3>${item.nama}</h3><strong>${item.harga}</strong><p>${item.hasil}</p><small>${item.demo}</small><i>BUKA DETAIL ↗</i></button>`).join('') : `<div class="empty-state"><h3>Paket tidak ditemukan.</h3><p>Coba kata kunci atau kategori lain.</p></div>`;
+  $('#catalogueGrid').innerHTML = items.length ? items.map((item) => `<button class="catalogue-card" type="button" data-catalogue-id="${item.id}">${cataloguePreview(item)}<span>${item.kategori}</span><h3>${item.nama}</h3><strong>${item.harga}</strong><p>${item.hasil}</p><small>${liveExamples[item.id]?.title || 'Demo live belum tersedia'}</small><i>BUKA DETAIL ↗</i></button>`).join('') : `<div class="empty-state"><h3>Paket tidak ditemukan.</h3><p>Coba kata kunci atau kategori lain.</p></div>`;
   document.querySelectorAll('[data-catalogue-id]').forEach((button) => button.addEventListener('click', () => openDrawer(button.dataset.catalogueId)));
 }
 function openDrawer(id) {
   const item = byId[id]; if (!item) return;
+  const live = liveExamples[id];
   activePackage = item;
-  $('#drawerContent').innerHTML = `<div class="drawer-hero"><span>${item.kategori}</span><h2>${item.nama}</h2><strong>${item.harga}</strong><p>${item.hasil}</p></div><div class="drawer-preview"><img src="assets/demos/${item.id}.png" alt="Concept preview ${item.demo}" /><span>CONCEPT PREVIEW · ${item.demo}</span></div><div class="drawer-facts"><div><span>COCOK UNTUK</span><p>${item.cocok}</p></div><div><span>PEMBEDA UTAMA</span><p>${item.pembeda}</p></div></div><details open><summary>Benefit & capability <b>${item.termasuk.length}</b></summary><ul>${item.termasuk.map((feature) => `<li>${feature}</li>`).join('')}</ul></details>${item.catatan ? `<details><summary>Catatan internal</summary><p class="drawer-note">${item.catatan}</p></details>` : ''}<div class="drawer-disclaimer"><b>Benchmark ≠ final quotation.</b><p>Harga final mengikuti scope, complexity, integration, timeline, support, dan biaya pihak ketiga.</p></div>`;
+  const drawerPreview = live
+    ? `<a class="drawer-preview" href="${live.url}" target="_blank" rel="noopener"><img src="${live.image}" alt="Screenshot live ${live.title}" /><span>WEBSITE LIVE · ${live.title} · BUKA ↗</span></a>`
+    : `<div class="drawer-no-demo"><span>DEMO LIVE BELUM TERSEDIA</span><p>Belum ada contoh Solivate yang benar-benar setara. Roadmap internal: ${item.demo}</p></div>`;
+  $('#drawerContent').innerHTML = `<div class="drawer-hero"><span>${item.kategori}</span><h2>${item.nama}</h2><strong>${item.harga}</strong><p>${item.hasil}</p></div>${drawerPreview}<div class="drawer-facts"><div><span>COCOK UNTUK</span><p>${item.cocok}</p></div><div><span>PEMBEDA UTAMA</span><p>${item.pembeda}</p></div></div><details open><summary>Benefit & capability <b>${item.termasuk.length}</b></summary><ul>${item.termasuk.map((feature) => `<li>${feature}</li>`).join('')}</ul></details>${item.catatan ? `<details><summary>Catatan internal</summary><p class="drawer-note">${item.catatan}</p></details>` : ''}<div class="drawer-disclaimer"><b>Benchmark ≠ final quotation.</b><p>Harga final mengikuti scope, complexity, integration, timeline, support, dan biaya pihak ketiga.</p></div>`;
   $('#packageDrawer').classList.add('open'); $('#packageDrawer').setAttribute('aria-hidden','false'); $('#drawerBackdrop').classList.add('open');
 }
 function closeDrawer() { activePackage = null; $('#packageDrawer').classList.remove('open'); $('#packageDrawer').setAttribute('aria-hidden','true'); $('#drawerBackdrop').classList.remove('open'); }
