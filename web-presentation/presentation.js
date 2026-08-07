@@ -4,9 +4,9 @@ const byId = Object.fromEntries(catalogue.map((item) => [item.id, item]));
 
 const chapters = [
   { id: '01', label: 'PATOKAN', from: 1, to: 2 },
-  { id: '02', label: 'HARGA PAKET', from: 3, to: 10 },
-  { id: '03', label: 'PENYESUAIAN', from: 11, to: 13 },
-  { id: '04', label: 'PENUTUP', from: 14, to: 14 },
+  { id: '02', label: 'HARGA PAKET', from: 3, to: 14 },
+  { id: '03', label: 'PENYESUAIAN', from: 15, to: 17 },
+  { id: '04', label: 'PENUTUP', from: 18, to: 18 },
 ];
 
 const packageCopy = {
@@ -93,7 +93,7 @@ function priceCard(id, compact = false) {
 }
 
 function priceGroup(title, subtitle, ids, className = '') {
-  return `<section class="price-group ${className}"><header><div><span>${title}</span><p>${subtitle}</p></div><b>${ids.length} PAKET</b></header><div class="price-grid count-${ids.length}">${ids.map((id) => priceCard(id, ids.length > 5)).join('')}</div></section>`;
+  return `<section class="price-group ${className}"><header><div><span>${title}</span><p>${subtitle}</p></div><b>${ids.length} PAKET</b></header><div class="price-grid count-${ids.length}">${ids.map((id) => priceCard(id)).join('')}</div></section>`;
 }
 
 function standardSlide(number, title, subtitle, body, className = '') {
@@ -116,35 +116,42 @@ const slides = [
       <article><span>ENTERPRISE</span><strong>Rp10jt+</strong><p>Scale, audit, security, integration</p><small>CONTOH · ERP / SaaS / multi-branch</small></article>
     </div>`),
 
-  standardSlide('02', 'Personal & Wedding.', 'Dari tampil online sampai publikasi dan guest operations.', `
-    <div class="dual-groups">${priceGroup('PERSONAL', 'Branding → CMS → publication', ['personal-basic','personal-standard','personal-cms','personal-blog'])}${priceGroup('WEDDING', 'Invitation → RSVP → QR → operations', ['wedding-basic','wedding-premium','wedding-rsvp','wedding-qr','wedding-pro'])}</div>`),
+  standardSlide('02', 'Personal.', 'Branding → multipage → CMS → publication.', priceGroup('PERSONAL', 'Harga bertambah saat client mulai mengelola dan menerbitkan konten sendiri.', ['personal-basic','personal-standard','personal-cms','personal-blog'], 'full-height readable-grid')),
 
-  standardSlide('03', 'Institution / Non-Government.', 'Website lembaga dan sistem operasional berada pada jalur harga yang berbeda.', priceGroup('INSTITUTION', 'Presence → CMS → interaction → operations', ['institution-landing','institution-profile','institution-cms','institution-pro','institution-ops-lite','institution-ops-standard','institution-ops-pro'], 'full-height')),
+  standardSlide('03', 'Wedding.', 'Invitation → interaction → RSVP → QR → guest operations.', priceGroup('WEDDING', 'Harga bertambah saat undangan mulai menyimpan dan memproses data tamu.', ['wedding-basic','wedding-premium','wedding-rsvp','wedding-qr','wedding-pro'], 'full-height readable-grid')),
 
-  standardSlide('04', 'UMKM.', 'Batas terpenting: Premium masih CMS. Business mulai mengelola data dan transaksi.', priceGroup('UMKM', 'Landing → multipage → CMS → lead → order → team → operations', ['umkm-basic','umkm-standard','umkm-cms','umkm-business-lite','umkm-business','umkm-business-pro','umkm-operational'], 'full-height')),
+  standardSlide('04', 'Institution / Non-Government.', 'Presence → CMS → interaction → operations.', priceGroup('INSTITUTION', 'Website lembaga dan sistem operasional berada pada kelas berbeda.', ['institution-landing','institution-profile','institution-cms','institution-pro','institution-ops-lite','institution-ops-standard','institution-ops-pro'], 'full-height readable-grid')),
 
-  standardSlide('05', 'Event & E-Commerce.', 'Event bergerak menuju ticketing. E-Commerce bergerak menuju retail operations.', `<div class="dual-groups">${priceGroup('EVENT', 'Campaign → registration → QR → paid ticket', ['event-landing','event-cms','event-registration','event-qr','event-ticketing'])}${priceGroup('E-COMMERCE', 'Storefront → payment → inventory → advanced retail', ['commerce-starter','commerce-payment','commerce-business','commerce-advanced'])}</div>`),
+  standardSlide('05', 'UMKM.', 'Landing → multipage → CMS → lead → order → team → operations.', priceGroup('UMKM', 'Premium masih CMS. Business mulai mengelola data dan transaksi.', ['umkm-basic','umkm-standard','umkm-cms','umkm-business-lite','umkm-business','umkm-business-pro','umkm-operational'], 'full-height readable-grid')),
 
-  standardSlide('06', 'POS, Booking & CRM.', 'Tiga jenis alat kerja: transaksi, penjadwalan, dan pipeline sales.', `<div class="triple-groups">${priceGroup('POS', 'Kasir → inventory → multi-cashier', ['pos-lite','pos-business','pos-pro'])}${priceGroup('BOOKING', 'Reservation → slot → multi-resource', ['booking-basic','booking-business','booking-pro'])}${priceGroup('CRM', 'Lead → team sales → automation', ['crm-lite','crm-business','crm-pro'])}</div>`),
+  standardSlide('06', 'Event.', 'Campaign → registration → QR → paid ticket.', priceGroup('EVENT', 'Harga bertambah ketika event mulai menyimpan peserta, check-in, dan menerima pembayaran.', ['event-landing','event-cms','event-registration','event-qr','event-ticketing'], 'full-height readable-grid')),
 
-  standardSlide('07', 'Corporate & Operational.', 'Corporate Business menghubungkan client. Operational menjadi alat kerja internal.', priceGroup('CORPORATE', 'Presence → content depth → business function → operations', ['corporate-website','corporate-professional','corporate-business','corporate-ops-lite','corporate-ops-standard','corporate-ops-pro','corporate-enterprise-ops'], 'full-height')),
+  standardSlide('07', 'E-Commerce.', 'Storefront → payment → commerce operations → advanced retail.', priceGroup('E-COMMERCE', 'Harga bertambah dari menerima order menjadi mengelola pembayaran, stok, dan retail operation.', ['commerce-starter','commerce-payment','commerce-business','commerce-advanced'], 'full-height readable-grid')),
 
-  standardSlide('08', 'Government & Healthcare.', 'Floor dan risiko lebih tinggi karena stakeholder, compliance, data, dan operational impact.', `<div class="dual-groups">${priceGroup('GOVERNMENT · FLOOR Rp5JT', 'Information → public service → integrated', ['government-website','government-professional','government-service','government-integrated','government-enterprise'])}${priceGroup('HEALTHCARE · SECURITY REVIEW', 'Presence → booking → clinic operations → system', ['clinic-website','clinic-booking','clinic-management','healthcare-system','hospital-enterprise'])}</div>`),
+  standardSlide('08', 'POS & Booking.', 'Transaksi kasir dan reservasi memakai pola operasi yang berbeda.', `<div class="dual-groups readable-dual">${priceGroup('POS', 'Kasir → inventory → multi-cashier', ['pos-lite','pos-business','pos-pro'])}${priceGroup('BOOKING', 'Reservation → slot → multi-resource', ['booking-basic','booking-business','booking-pro'])}</div>`),
 
-  standardSlide('09', 'Custom Software & Platforms.', 'Harga naik karena arsitektur, hubungan data, role, tenancy, vendor logic, dan scale.', priceGroup('PRODUCT PLATFORM', 'Custom app → ERP / SaaS / Marketplace → Enterprise', ['custom-software','erp-lite','saas-platform','erp-business','marketplace','enterprise-platform'], 'full-height')),
+  standardSlide('09', 'CRM.', 'Lead → team sales → automation.', priceGroup('CRM', 'Harga bertambah saat pipeline dipakai tim dan membutuhkan approval atau integrasi.', ['crm-lite','crm-business','crm-pro'], 'full-height readable-grid')),
 
-  standardSlide('10', 'Add-on utama.', 'Gunakan sebagai penambah scope. Jika capability berubah, upgrade paket.', `
+  standardSlide('10', 'Corporate & Operational.', 'Presence → content depth → business function → operations.', priceGroup('CORPORATE', 'Corporate Business menghubungkan client. Operational menjadi alat kerja internal.', ['corporate-website','corporate-professional','corporate-business','corporate-ops-lite','corporate-ops-standard','corporate-ops-pro','corporate-enterprise-ops'], 'full-height readable-grid')),
+
+  standardSlide('11', 'Government.', 'Information → public service → integrated system.', priceGroup('GOVERNMENT · FLOOR Rp5JT', 'Stakeholder, compliance, security, dan operational impact membentuk harga.', ['government-website','government-professional','government-service','government-integrated','government-enterprise'], 'full-height readable-grid')),
+
+  standardSlide('12', 'Healthcare.', 'Presence → booking → clinic operations → healthcare system.', priceGroup('HEALTHCARE · SECURITY REVIEW', 'Data sensitif dan workflow kesehatan membutuhkan discovery lebih dalam.', ['clinic-website','clinic-booking','clinic-management','healthcare-system','hospital-enterprise'], 'full-height readable-grid')),
+
+  standardSlide('13', 'Custom Software & Platforms.', 'Custom app → ERP / SaaS / Marketplace → Enterprise.', priceGroup('PRODUCT PLATFORM', 'Harga naik karena arsitektur, data, role, tenancy, vendor logic, dan scale.', ['custom-software','erp-lite','saas-platform','erp-business','marketplace','enterprise-platform'], 'full-height readable-grid')),
+
+  standardSlide('14', 'Add-on utama.', 'Gunakan sebagai penambah scope. Jika capability berubah, upgrade paket.', `
     <div class="addon-price-grid">
       ${[['Additional page','Rp100-250rb','Halaman normal'],['Extra CMS type','Rp250-500rb','Schema + CRUD + media'],['Additional role','Rp300-750rb','Permission matrix'],['Approval workflow','Rp500rb-1,5jt','Multi-step approval'],['Payment gateway','Rp750rb-1,5jt','Webhook + payment status'],['WhatsApp / API','Rp500rb-1,5jt+','Provider terpisah'],['Shipping','Rp750rb-1,5jt+','Rate / AWB / tracking'],['QR + scanner','Rp500rb-1jt','Identity + check-in'],['Advanced report','Rp300rb-1jt+','Filter + aggregation + export'],['Multi-branch','Rp1jt+','Branch + role + report'],['External API','Rp500rb+','Tergantung API & testing'],['Data migration','Rp500rb+','Volume + cleaning + mapping'],['Urgent delivery','+20-50%','Reprioritization / overtime']].map(x=>`<article><span>${x[0]}</span><strong>${x[1]}</strong><small>${x[2]}</small></article>`).join('')}
     </div>
     <div class="upgrade-rule"><b>2–3 ADD-ON MENYAMAI TIER BERIKUTNYA?</b><span>UPGRADE PACKAGE / RE-SCOPE</span></div>`),
 
-  standardSlide('11', 'Kenapa benchmark berubah?', 'Angka baru mengikuti capability yang sebenarnya dibawa produk.', `
+  standardSlide('15', 'Kenapa benchmark berubah?', 'Angka baru mengikuti capability yang sebenarnya dibawa produk.', `
     <div class="change-grid">
       ${[['Personal CMS','Rp499rb','Rp799rb','Dashboard + CMS'],['UMKM Business','Rp1,499jt','Rp2,99jt','Customer + order + invoice'],['Corporate CMS','Rp1,299jt','Rp2,5jt','Corporate scope & review'],['Government CMS','Rp1,999jt','Rp5jt','Government floor'],['Public Service','Rp3,999jt','Rp10jt','Submission + staff workflow'],['ERP Lite','Rp5,999jt','Rp10jt','3–5 integrated modules'],['SaaS','Rp7,999jt','Rp12,5jt','Tenant + account lifecycle'],['Enterprise','Custom','Rp25jt+ / Custom','Scale + security + SLA']].map(x=>`<article><span>${x[0]}</span><div><del>${x[1]}</del><i>→</i><strong>${x[2]}</strong></div><small>ALASAN · ${x[3]}</small></article>`).join('')}
     </div>`),
 
-  standardSlide('12', 'Contoh menggambarkan proyek.', 'Mulai dari contoh kebutuhan, lalu tunjukkan paket dan alasan harganya.', `
+  standardSlide('16', 'Contoh menggambarkan proyek.', 'Mulai dari contoh kebutuhan, lalu tunjukkan paket dan alasan harganya.', `
     <div class="example-grid">
       ${[
         ['Laundry menerima order WA','UMKM Business','Rp2,99jt+','Customer → order → processing → ready → invoice','U05 · CleanFlow Laundry'],
