@@ -63,6 +63,10 @@ function packageSlide(item, meta, packageIndex, packageTotal) {
       </div>
 
       <div class="package-explanation">
+        <figure class="demo-visual">
+          <img src="assets/demos/${item.id}.png" alt="Concept preview ${item.demo}" />
+          <figcaption><span>CONCEPT PREVIEW · BUKAN WEBSITE PIHAK KETIGA</span></figcaption>
+        </figure>
         <section class="benefit-block">
           <span>BENEFIT UTAMA</span>
           <h2>${item.hasil}</h2>
@@ -158,13 +162,13 @@ function filteredCatalogue() {
 function renderCatalogue() {
   const items = filteredCatalogue();
   $('#catalogueCount').textContent = `${items.length} paket ditemukan`;
-  $('#catalogueGrid').innerHTML = items.length ? items.map((item) => `<button class="catalogue-card" type="button" data-catalogue-id="${item.id}"><span>${item.kategori}</span><h3>${item.nama}</h3><strong>${item.harga}</strong><p>${item.hasil}</p><small>${item.demo}</small><i>BUKA DETAIL ↗</i></button>`).join('') : `<div class="empty-state"><h3>Paket tidak ditemukan.</h3><p>Coba kata kunci atau kategori lain.</p></div>`;
+  $('#catalogueGrid').innerHTML = items.length ? items.map((item) => `<button class="catalogue-card" type="button" data-catalogue-id="${item.id}"><img src="assets/demos/${item.id}.png" alt="" loading="lazy" /><span>${item.kategori}</span><h3>${item.nama}</h3><strong>${item.harga}</strong><p>${item.hasil}</p><small>${item.demo}</small><i>BUKA DETAIL ↗</i></button>`).join('') : `<div class="empty-state"><h3>Paket tidak ditemukan.</h3><p>Coba kata kunci atau kategori lain.</p></div>`;
   document.querySelectorAll('[data-catalogue-id]').forEach((button) => button.addEventListener('click', () => openDrawer(button.dataset.catalogueId)));
 }
 function openDrawer(id) {
   const item = byId[id]; if (!item) return;
   activePackage = item;
-  $('#drawerContent').innerHTML = `<div class="drawer-hero"><span>${item.kategori}</span><h2>${item.nama}</h2><strong>${item.harga}</strong><p>${item.hasil}</p></div><div class="drawer-facts"><div><span>COCOK UNTUK</span><p>${item.cocok}</p></div><div><span>PEMBEDA UTAMA</span><p>${item.pembeda}</p></div></div><details open><summary>Benefit & capability <b>${item.termasuk.length}</b></summary><ul>${item.termasuk.map((feature) => `<li>${feature}</li>`).join('')}</ul></details><details><summary>Contoh proyek / demo</summary><div class="drawer-demo"><span>CONTOH</span><h3>${item.demo}</h3><p>Demo menggambarkan capability paket; scope final tetap mengikuti discovery.</p></div></details>${item.catatan ? `<details><summary>Catatan internal</summary><p class="drawer-note">${item.catatan}</p></details>` : ''}<div class="drawer-disclaimer"><b>Benchmark ≠ final quotation.</b><p>Harga final mengikuti scope, complexity, integration, timeline, support, dan biaya pihak ketiga.</p></div>`;
+  $('#drawerContent').innerHTML = `<div class="drawer-hero"><span>${item.kategori}</span><h2>${item.nama}</h2><strong>${item.harga}</strong><p>${item.hasil}</p></div><div class="drawer-preview"><img src="assets/demos/${item.id}.png" alt="Concept preview ${item.demo}" /><span>CONCEPT PREVIEW · ${item.demo}</span></div><div class="drawer-facts"><div><span>COCOK UNTUK</span><p>${item.cocok}</p></div><div><span>PEMBEDA UTAMA</span><p>${item.pembeda}</p></div></div><details open><summary>Benefit & capability <b>${item.termasuk.length}</b></summary><ul>${item.termasuk.map((feature) => `<li>${feature}</li>`).join('')}</ul></details>${item.catatan ? `<details><summary>Catatan internal</summary><p class="drawer-note">${item.catatan}</p></details>` : ''}<div class="drawer-disclaimer"><b>Benchmark ≠ final quotation.</b><p>Harga final mengikuti scope, complexity, integration, timeline, support, dan biaya pihak ketiga.</p></div>`;
   $('#packageDrawer').classList.add('open'); $('#packageDrawer').setAttribute('aria-hidden','false'); $('#drawerBackdrop').classList.add('open');
 }
 function closeDrawer() { activePackage = null; $('#packageDrawer').classList.remove('open'); $('#packageDrawer').setAttribute('aria-hidden','true'); $('#drawerBackdrop').classList.remove('open'); }
