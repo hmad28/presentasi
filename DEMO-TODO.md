@@ -18,18 +18,18 @@ Sebuah demo dianggap selesai setelah memiliki screenshot hero 16:9, satu capabil
   Website multipage Home, About, Projects, Experience, Services, dan Contact. **Sumber tersedia:** Firqatun/StudyShare; pilih layar yang menunjukkan struktur multipage.
 - [ ] **Wedding Invitation — Rp199.000+**  
   Undangan, nama tamu, countdown, maps, galeri, gift, musik, dan RSVP sederhana. **Sumber tersedia:** Hammad & Fulanah.
-- [ ] **Wedding Guest Management — Rp999.000+**  
+- [ ] **Wedding Guest Management — Rp799.000+**
   Database tamu, QR pass, scanner, check-in, attendance, dan export. **Sumber tersedia:** WeddingPro; **perlu akses dashboard**.
 - [ ] **Institution Profile — Rp499.000+**  
   Profil, organisasi, program, galeri, contact, dan maps. **Sumber tersedia:** SMK Solivate 01.
-- [ ] **Institution Pro — Rp999.000+**  
+- [ ] **Institution Pro — Rp799.000+**
   CMS, program, artikel, agenda, dokumen, announcement, form, search/filter. **Sumber tersedia:** Peduli Sesama atau Al-Muhtadun; **perlu akses dashboard**.
 
 ## 2. UMKM & Growing Business
 
 - [ ] **UMKM Starter — Rp499.000**  
   Landing bisnis mikro dengan produk/jasa, testimoni, maps, dan WhatsApp. **Perlu demo Kopi Rona baru**.
-- [ ] **UMKM Professional — Rp799.000+**  
+- [ ] **UMKM Professional — Rp1.099.000+**
   Website bisnis multipage dengan portfolio, analytics, SEO, dan custom domain. **Sumber tersedia:** Nusuk Haromain Indonesia.
 - [ ] **Event Website — Rp749.000+**  
   Hero, countdown, agenda, speaker, venue, sponsor, FAQ, dan CTA. **Perlu demo Tech Summit baru**.
@@ -37,11 +37,11 @@ Sebuah demo dianggap selesai setelah memiliki screenshot hero 16:9, satu capabil
   Form, database participant, confirmation, search, filter, export, dan email. **Perlu demo EventReg baru**.
 - [ ] **Event Ticketing — Rp3.499.000+**  
   Ticket type, quota, checkout, payment, QR ticket, scanner, sales, dan attendance. **Perlu demo ticketing baru**.
-- [ ] **E-Commerce Starter — Rp2.499.000+**  
+- [ ] **E-Commerce Starter — Rp1.499.000+**
   Storefront, CMS, cart, checkout, customer, order dashboard, dan pembayaran manual. **Sumber tersedia:** Makdian Bakery.
-- [ ] **E-Commerce Business — Rp3.499.000+**  
+- [ ] **E-Commerce Business — Rp2.499.000+**
   Payment gateway, QRIS, tracking, callback, invoice, customer, dan notification. **Perlu screenshot alur payment yang spesifik**.
-- [ ] **E-Commerce Pro — Rp4.999.000+**  
+- [ ] **E-Commerce Pro — Rp5.499.000+**
   Inventory, voucher, customer, shipping, roles, operational dashboard, dan report. **Sumber tersedia:** Shofi Frozen; **perlu akses dashboard**.
 - [ ] **Business System — Rp2.500.000+**  
   Satu workflow utama: CRM, booking, POS, laundry, rental, atau order management. **Sumber tersedia:** Cutbae untuk use case booking; buat layar dashboard booking.
@@ -54,7 +54,7 @@ Sebuah demo dianggap selesai setelah memiliki screenshot hero 16:9, satu capabil
   CMS, company profile, service, case study, team, news, lead, SEO, dan analytics. **Sumber tersedia:** Buraq Logistik atau ADD Logistik.
 - [ ] **Corporate Business — Rp5.000.000+**  
   Corporate CMS, lead/request database, customer, document, quotation, status, dashboard, dan report. **Perlu demo Nexa Client Portal baru**.
-- [ ] **Government Website — Rp5.000.000+**  
+- [ ] **Government Website — Rp5.499.000+**
   Portal profile, organisasi, berita, agenda, dokumen, publikasi, CMS, accessibility, dan SEO. **Perlu demo Portal Desa baru**.
 - [ ] **Digital Public Service — Rp10.000.000+**  
   Submission, upload, reference number, tracking, staff verification, approval, notification, dan report. **Perlu demo e-Layanan baru**.

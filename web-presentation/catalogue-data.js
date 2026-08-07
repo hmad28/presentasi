@@ -1,5 +1,5 @@
 const pkg = (data) => ({
-  cocok: [], baseline: [], optional: [], excluded: [], adjustment: [], customTrigger: [], examples: [], ...data,
+  cocok: [], baseline: [], optional: [], excluded: [], adjustment: [], customTrigger: [], examples: [], guardrail: '', ...data,
 });
 
 window.SOLIVATE_CATALOGUE = [
@@ -12,6 +12,7 @@ window.SOLIVATE_CATALOGUE = [
     excluded: ['CMS', 'Admin dashboard', 'Blog system', 'Database', 'Login / authentication', 'Custom application feature'],
     difference: 'Satu halaman fokus untuk hadir online. Belum ada CMS, dashboard, atau database.',
     useCase: 'Portfolio mahasiswa atau freelancer dengan CTA WhatsApp.',
+    guardrail: 'Domain umum hanya dapat di-include jika final project di atas Rp400.000.',
   }),
   pkg({
     id: 'personal-professional', group: 'personal', subcategory: 'Personal', name: 'Personal Professional', price: 'Rp499.000+',
@@ -19,9 +20,10 @@ window.SOLIVATE_CATALOGUE = [
     cocok: ['Freelancer profesional', 'Consultant', 'Creator', 'Personal brand aktif', 'Profesional dengan portfolio lebih besar'],
     outcome: 'Personal branding yang lebih lengkap, kredibel, dan mudah dikembangkan.',
     baseline: ['Multipage website', 'Home', 'About', 'Portfolio / Projects', 'Experience / Achievement', 'Services bila diperlukan', 'Contact', 'Basic analytics', 'Search Console', 'SEO foundation', 'Custom domain umum sesuai kebijakan', 'Hosting + SSL'],
-    optional: ['CMS', 'Blog', 'Article management', 'Gallery management', 'Project management', 'Advanced animation', 'Additional pages', 'Multilingual'],
+    optional: ['CMS — jika diaktifkan, final quotation Personal Website wajib di atas Rp500.000', 'Blog', 'Article management', 'Gallery management', 'Project management', 'Advanced animation', 'Additional pages', 'Multilingual'],
     difference: 'Naik dari landing page menjadi website multipage. CMS dan blog tetap add-on sesuai scope.',
     useCase: 'Website konsultan dengan halaman layanan, proyek, pengalaman, dan kontak.',
+    guardrail: 'Personal Website + CMS wajib memiliki final quotation di atas Rp500.000.',
   }),
   pkg({
     id: 'wedding-invitation', group: 'personal', subcategory: 'Wedding', name: 'Wedding Invitation', price: 'Rp199.000+',
@@ -34,7 +36,7 @@ window.SOLIVATE_CATALOGUE = [
     useCase: 'Undangan akad dan resepsi dengan nama tamu custom, RSVP sederhana, maps, dan gift.',
   }),
   pkg({
-    id: 'wedding-guest-management', group: 'personal', subcategory: 'Wedding', name: 'Wedding Guest Management', price: 'Rp999.000+',
+    id: 'wedding-guest-management', group: 'personal', subcategory: 'Wedding', name: 'Wedding Guest Management', price: 'Rp799.000+',
     audience: 'Wedding dengan database tamu, check-in digital, dan kontrol attendance.',
     cocok: ['Wedding dengan guest management', 'Acara dengan database tamu', 'Check-in digital', 'Reception dengan kontrol attendance'],
     outcome: 'Mengelola tamu mulai dari invitation, RSVP, hingga check-in venue dalam satu sistem.',
@@ -42,6 +44,7 @@ window.SOLIVATE_CATALOGUE = [
     adjustment: ['Jumlah tamu', 'Jumlah scanner', 'Jumlah gate', 'Bulk import', 'Guest category', 'Pax management', 'Multiple venue', 'Multiple reception session'],
     difference: 'Bukan hanya undangan: sudah mencakup database, QR, scanner, dan dashboard attendance.',
     useCase: 'Resepsi dengan QR pass per tamu dan beberapa petugas check-in.',
+    guardrail: 'Wedding full package / guest management wajib memiliki final quotation di atas Rp700.000.',
   }),
   pkg({
     id: 'institution-profile', group: 'personal', subcategory: 'Institution', name: 'Institution Profile', price: 'Rp499.000+',
@@ -51,9 +54,10 @@ window.SOLIVATE_CATALOGUE = [
     baseline: ['Home', 'About / Profile', 'Organization', 'Program / Activities', 'Gallery', 'Contact', 'WhatsApp', 'Maps bila diperlukan', 'Basic SEO', 'Hosting + SSL'],
     difference: 'Website profil institusi tanpa kebutuhan pengelolaan konten rutin melalui dashboard.',
     useCase: 'Profil sekolah, komunitas, yayasan, atau masjid dengan program dan galeri.',
+    guardrail: 'Domain umum hanya dapat di-include jika final project di atas Rp400.000.',
   }),
   pkg({
-    id: 'institution-pro', group: 'personal', subcategory: 'Institution', name: 'Institution Pro', price: 'Rp999.000+',
+    id: 'institution-pro', group: 'personal', subcategory: 'Institution', name: 'Institution Pro', price: 'Rp799.000+',
     audience: 'Institusi yang rutin memperbarui informasi, program, berita, dokumen, agenda, atau aktivitas.',
     cocok: ['Institusi dengan berita rutin', 'Yayasan dengan program aktif', 'Masjid dengan agenda', 'Organisasi dengan dokumen publik'],
     outcome: 'Institusi dapat mengelola konten dan informasi secara mandiri tanpa selalu bergantung pada developer.',
@@ -61,6 +65,7 @@ window.SOLIVATE_CATALOGUE = [
     customTrigger: ['Database peserta / siswa / jamaah', 'Payment', 'Attendance', 'Multiple staff', 'Workflow', 'Approval', 'Transaction', 'Multi-role', 'Mobile app'],
     difference: 'CMS dan dashboard membuat admin dapat mengelola berita, program, agenda, dokumen, serta galeri sendiri.',
     useCase: 'Portal masjid atau yayasan dengan berita, agenda, dokumen, galeri, dan CMS.',
+    guardrail: 'Paket institusi yang menggunakan CMS wajib memiliki final quotation di atas Rp700.000.',
   }),
 
   pkg({
@@ -71,16 +76,18 @@ window.SOLIVATE_CATALOGUE = [
     baseline: ['1 landing page', 'Business profile', 'Product / service', 'Benefits', 'Gallery', 'Testimonial', 'Maps', 'WhatsApp CTA', 'Social media', 'Basic SEO', 'Hosting + SSL'],
     difference: 'Landing page penjualan sederhana tanpa CMS atau proses transaksi di dalam sistem.',
     useCase: 'Landing bisnis lokal dengan daftar layanan, galeri, lokasi, dan CTA WhatsApp.',
+    guardrail: 'Domain umum hanya dapat di-include jika final project di atas Rp400.000.',
   }),
   pkg({
-    id: 'umkm-professional', group: 'umkm', subcategory: 'UMKM Website', name: 'UMKM Professional', price: 'Rp799.000+',
+    id: 'umkm-professional', group: 'umkm', subcategory: 'UMKM Website', name: 'UMKM Professional', price: 'Rp1.099.000+',
     audience: 'UMKM berkembang, contractor, interior, agency kecil, F&B, service business, dan brand lokal.',
     cocok: ['UMKM berkembang', 'Contractor', 'Interior', 'Agency kecil', 'F&B', 'Service business', 'Brand lokal'],
     outcome: 'Website bisnis yang lebih profesional dan lengkap untuk meningkatkan trust dan presentasi brand.',
     baseline: ['Multipage website', 'Home', 'About', 'Product / Service', 'Portfolio / Gallery', 'Testimonial', 'Contact', 'Basic analytics', 'SEO foundation', 'Custom domain sesuai kebijakan', 'Hosting + SSL'],
-    optional: ['CMS', 'Product management', 'Blog', 'Promo', 'Gallery management', 'Lead form', 'Additional pages', 'WhatsApp automation'],
+    optional: ['CMS — final quotation UMKM dengan CMS wajib di atas Rp1.000.000', 'Product management', 'Blog', 'Promo', 'Gallery management', 'Lead form', 'Additional pages', 'WhatsApp automation'],
     difference: 'Naik dari landing menjadi multipage yang lebih kredibel. CMS tetap optional sesuai kebutuhan.',
     useCase: 'Travel, contractor, atau brand lokal dengan halaman layanan, portfolio, dan kontak.',
+    guardrail: 'Company profile formal dan UMKM dengan CMS wajib memiliki final quotation di atas Rp1.000.000.',
   }),
   pkg({
     id: 'event-website', group: 'umkm', subcategory: 'Event', name: 'Event Website', price: 'Rp749.000+',
@@ -88,9 +95,10 @@ window.SOLIVATE_CATALOGUE = [
     cocok: ['Seminar', 'Workshop', 'Kajian', 'Conference kecil–menengah', 'Community event', 'Expo', 'Festival', 'Campaign event'],
     outcome: 'Pusat informasi dan promosi event yang memudahkan calon peserta memahami acara dan melakukan action.',
     baseline: ['Hero', 'Countdown', 'Event overview', 'Agenda', 'Speaker', 'Venue', 'Sponsor / partner', 'FAQ', 'CTA', 'Responsive', 'Basic SEO', 'Social sharing'],
-    optional: ['CMS', 'Announcement', 'Gallery', 'Sponsor management', 'Speaker management', 'Agenda management'],
+    optional: ['CMS — final quotation Event dengan CMS wajib di atas Rp700.000', 'Announcement', 'Gallery', 'Sponsor management', 'Speaker management', 'Agenda management'],
     difference: 'Fokus pada promosi dan informasi event; registrasi dapat memakai link eksternal.',
     useCase: 'Website seminar dengan agenda, pembicara, venue, sponsor, dan tombol daftar.',
+    guardrail: 'Event dengan CMS wajib memiliki final quotation di atas Rp700.000.',
   }),
   pkg({
     id: 'event-registration', group: 'umkm', subcategory: 'Event', name: 'Event Registration', price: 'Rp1.499.000+',
@@ -114,8 +122,8 @@ window.SOLIVATE_CATALOGUE = [
     useCase: 'Conference berbayar dengan beberapa tipe tiket, QRIS, QR pass, scanner, dan laporan.',
   }),
   pkg({
-    id: 'ecommerce-starter', group: 'umkm', subcategory: 'E-Commerce', name: 'E-Commerce Starter', price: 'Rp2.499.000+',
-    audience: 'UMKM yang ingin memiliki toko online sendiri tanpa kebutuhan payment automation yang kompleks.',
+    id: 'ecommerce-starter', group: 'umkm', subcategory: 'E-Commerce', name: 'E-Commerce Starter', price: 'Rp1.499.000+',
+    audience: 'UMKM yang ingin memiliki toko online sendiri dengan order management dan pembayaran manual / confirmation sederhana.',
     cocok: ['Toko online pertama', 'UMKM dengan pembayaran manual', 'Single merchant', 'Katalog produk dan order'],
     outcome: 'Menerima order langsung melalui website dengan katalog, cart, checkout, dan dashboard order.',
     baseline: ['Storefront', 'CMS', 'Product management', 'Category', 'Product detail', 'Cart', 'Checkout', 'Customer data', 'Order management', 'Admin dashboard', 'Manual payment / simple confirmation'],
@@ -123,23 +131,25 @@ window.SOLIVATE_CATALOGUE = [
     useCase: 'Bakery atau apparel store dengan katalog, cart, checkout, dan order admin.',
   }),
   pkg({
-    id: 'ecommerce-business', group: 'umkm', subcategory: 'E-Commerce', name: 'E-Commerce Business', price: 'Rp3.499.000+',
-    audience: 'Bisnis yang ingin proses penjualan dan payment lebih otomatis.',
+    id: 'ecommerce-business', group: 'umkm', subcategory: 'E-Commerce', name: 'E-Commerce Business', price: 'Rp2.499.000+',
+    audience: 'Bisnis yang ingin proses penjualan dan pembayaran QRIS lebih otomatis.',
     cocok: ['Toko dengan QRIS otomatis', 'Brand dengan order aktif', 'Admin yang perlu payment tracking'],
     outcome: 'Mengotomatisasi checkout dan pembayaran agar order lebih mudah diproses oleh admin.',
-    baseline: ['Semua E-Commerce Starter', 'Payment gateway', 'QRIS sesuai provider', 'Payment tracking', 'Webhook / callback', 'Invoice / receipt', 'Customer management basic', 'Notification basic'],
+    baseline: ['Semua E-Commerce Starter', 'Payment gateway QRIS sesuai provider', 'Payment tracking', 'Webhook / callback', 'Invoice / receipt', 'Customer management basic', 'Notification basic'],
     difference: 'Menambahkan lifecycle pembayaran otomatis dari checkout hingga status paid dan invoice.',
     useCase: 'Frozen food store dengan QRIS, payment tracking, invoice, dan notifikasi order.',
+    guardrail: 'E-Commerce dengan Payment Gateway QRIS wajib memiliki final quotation di atas Rp2.000.000.',
   }),
   pkg({
-    id: 'ecommerce-pro', group: 'umkm', subcategory: 'E-Commerce', name: 'E-Commerce Pro', price: 'Rp4.999.000+',
-    audience: 'Growing retail, brand, dan toko online dengan aktivitas operasional lebih tinggi.',
+    id: 'ecommerce-pro', group: 'umkm', subcategory: 'E-Commerce', name: 'E-Commerce Pro', price: 'Rp5.499.000+',
+    audience: 'Growing retail, brand, dan toko online yang membutuhkan operasional lebih lengkap dan/atau lebih dari satu metode payment gateway.',
     cocok: ['Growing retail', 'Brand dengan inventory', 'Toko dengan promo dan shipping', 'Operasi penjualan aktif'],
     outcome: 'Mengelola penjualan, inventory, customer, promotion, shipping, dan reporting dari satu dashboard.',
-    baseline: ['Semua fondasi E-Commerce Business', 'Inventory', 'Voucher / promo', 'Customer management', 'Sales report', 'Shipping integration', 'Basic roles bila diperlukan', 'Operational dashboard'],
+    baseline: ['Semua fondasi E-Commerce Business', 'Multi-payment gateway / metode pembayaran tambahan sesuai provider dan scope', 'Inventory', 'Voucher / promo', 'Customer management', 'Sales report', 'Shipping integration', 'Basic roles bila diperlukan', 'Operational dashboard'],
     customTrigger: ['Multi-warehouse kompleks', 'Multi-branch retail', 'Advanced inventory', 'ERP integration', 'Complex refund / return', 'Multi-vendor', 'Marketplace', 'High traffic', 'High transaction', 'Mobile app', 'Advanced BI / reporting'],
     difference: 'Naik dari payment automation menjadi operasi commerce dengan inventory, promo, shipping, dan report.',
     useCase: 'Retail online dengan stok, voucher, pelanggan, pengiriman, dashboard, dan laporan penjualan.',
+    guardrail: 'E-Commerce dengan multi-payment gateway wajib memiliki final quotation di atas Rp5.000.000.',
   }),
   pkg({
     id: 'business-system', group: 'umkm', subcategory: 'Business System', name: 'Business System', price: 'Rp2.500.000+',
@@ -171,6 +181,7 @@ window.SOLIVATE_CATALOGUE = [
     optional: ['Careers', 'ESG / sustainability', 'Investor information', 'Document center', 'Multilingual', 'Advanced SEO', 'Integration'],
     difference: 'Standar corporate sudah mencakup CMS, content architecture, SEO, analytics, dan lead form dasar.',
     useCase: 'Company profile logistik atau consulting dengan layanan, case study, team, news, dan CMS.',
+    guardrail: 'Semua deliverable company profile bisnis formal wajib memiliki final quotation di atas Rp1.000.000.',
   }),
   pkg({
     id: 'corporate-business', group: 'enterprise', subcategory: 'Corporate', name: 'Corporate Business', price: 'Rp5.000.000+',
@@ -183,13 +194,14 @@ window.SOLIVATE_CATALOGUE = [
     useCase: 'Portal inquiry perusahaan dari lead masuk hingga quotation, dokumen, dan status proses.',
   }),
   pkg({
-    id: 'government-website', group: 'enterprise', subcategory: 'Government', name: 'Government Website', price: 'Rp5.000.000+',
+    id: 'government-website', group: 'enterprise', subcategory: 'Government', name: 'Government Website', price: 'Rp5.499.000+',
     audience: 'Desa, instansi, lembaga pemerintah, unit pemerintah, dan public information portal.',
     cocok: ['Desa', 'Instansi', 'Lembaga pemerintah', 'Unit pemerintah', 'Public information portal'],
     outcome: 'Portal informasi publik yang terstruktur, kredibel, dan dapat dikelola admin.',
     baseline: ['Profile', 'Organization', 'News', 'Agenda', 'Announcement', 'Documents', 'Publication', 'Gallery', 'CMS', 'Admin dashboard', 'Basic accessibility', 'Basic SEO'],
     difference: 'Portal publik dengan CMS, dokumen, accessibility, dan requirement stakeholder sektor pemerintah.',
     useCase: 'Portal desa atau instansi dengan berita, agenda, pengumuman, dokumen, dan publikasi.',
+    guardrail: 'Website Government / sektor publik wajib memiliki final quotation di atas Rp5.000.000.',
   }),
   pkg({
     id: 'digital-public-service', group: 'enterprise', subcategory: 'Government', name: 'Digital Public Service', price: 'Rp10.000.000+',

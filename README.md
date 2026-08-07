@@ -24,7 +24,7 @@ Setiap paket mempunyai satu halaman khusus yang menampilkan harga, outcome, bene
 
 ## Fitur
 
-- Presentasi full-page 16:9 dengan 41 halaman.
+- Presentasi full-page 16:9 dengan 43 halaman.
 - Navigasi tombol `LANJUT` dan `KEMBALI`.
 - Daftar isi tiga kategori yang dapat diklik.
 - Katalog 21 paket dengan pencarian dan filter.
@@ -32,6 +32,7 @@ Setiap paket mempunyai satu halaman khusus yang menampilkan harga, outcome, bene
 - Screenshot serta tautan website Solivate untuk contoh yang relevan.
 - Placeholder jujur untuk demo khusus yang belum tersedia.
 - Client scale, complexity, quotation formula, add-on, custom trigger, dan decision guide.
+- Pricing Guardrails wajib untuk domain, CMS, commerce, company profile, dan government.
 - Studi kasus Event 20.000+ visitor dan Full Travel Umroh System.
 - Deep link per halaman, fullscreen, dan navigasi keyboard.
 
@@ -60,7 +61,7 @@ web-presentation/
 ├── index.html            # Shell presentasi dan overlay
 ├── catalogue-data.js     # 21 paket dan scope lengkap
 ├── live-examples.js      # Pemetaan contoh website nyata
-├── presentation.js       # 41 halaman dan interaksi
+├── presentation.js       # 43 halaman dan interaksi
 ├── styles.css            # Sistem visual serta responsive layout
 └── assets/               # Logo dan screenshot website
 

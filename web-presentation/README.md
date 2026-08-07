@@ -1,6 +1,6 @@
 # Solivate Studio — Pricing Master Simplified 2026
 
-Presentasi browser 41 halaman yang mengikuti materi `Solivate_Studio_Pricing_Master_Simplified_2026.md`.
+Presentasi browser 43 halaman yang mengikuti materi `Solivate_Studio_Pricing_Master_Simplified_2026_UPDATED.md`.
 
 ## Isi
 
@@ -10,6 +10,7 @@ Presentasi browser 41 halaman yang mengikuti materi `Solivate_Studio_Pricing_Mas
 - Harga, outcome, benefit, pembeda, dan contoh implementasi.
 - Panel detail untuk baseline, exclusions, optional/add-on, adjustment, workflow, dan custom trigger.
 - Client scale, complexity, formula quotation, add-ons, studi kasus, decision guide, serta konsolidasi paket lama.
+- Pricing Guardrails wajib untuk domain, CMS, payment gateway, company profile, dan government.
 
 ## Menjalankan
 

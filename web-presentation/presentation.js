@@ -31,6 +31,7 @@ function packageSlide(item, index, total) {
         <h1>${esc(item.name)}</h1>
         <div class="price-label">MULAI DARI</div>
         <strong class="hero-price ${item.price.length > 16 ? 'long' : ''}">${esc(item.price)}</strong>
+        ${item.guardrail ? `<div class="guardrail-chip"><span>PRICING FLOOR</span>${esc(item.guardrail)}</div>` : ''}
         <p class="outcome">${esc(item.outcome)}</p>
         <button class="detail-button" type="button" data-detail="${item.id}">LIHAT SCOPE LENGKAP <b>+</b></button>
         <section class="benefit-list">
@@ -109,6 +110,27 @@ const slides = [
   },
 ];
 
+slides.push(
+  {
+    type: 'guardrails', group: 'overview',
+    html: `<div class="guardrails-page"><header><span>05 · PRICING GUARDRAILS · WAJIB</span><h1>Benchmark boleh fleksibel.<br><em>Floor tidak boleh ditembus.</em></h1><p>Jika benchmark package lebih tinggi, gunakan benchmark. Jika scope menyentuh kondisi berikut, final quotation tidak boleh sama dengan atau berada di bawah floor tanpa approval khusus.</p></header>
+      <div class="guardrail-grid">${[
+        ['Domain umum included','> Rp400rb'],['Personal + CMS','> Rp500rb'],['Wedding full / guest management','> Rp700rb'],['Institution + CMS','> Rp700rb'],['Event + CMS','> Rp700rb'],['UMKM + CMS','> Rp1jt'],['Company Profile','> Rp1jt'],['E-Commerce + PG QRIS','> Rp2jt'],['E-Commerce + Multi-PG','> Rp5jt'],['Government Website','> Rp5jt']
+      ].map(([condition,floor]) => `<article><span>${condition}</span><b>${floor}</b></article>`).join('')}</div></div>`,
+  },
+  {
+    type: 'policies', group: 'overview', dark: true,
+    html: `<div class="policies-page"><header><span>06 · KEBIJAKAN PENDUKUNG</span><h1>Lima guardrail<br>yang wajib diingat.</h1></header>
+      <div class="policy-list">
+        <article><b>DOMAIN</b><p>Project ≤ Rp400rb memakai subdomain Solivate atau domain client. Domain umum hanya included jika final > Rp400rb. Domain khusus/premium dihitung terpisah.</p></article>
+        <article><b>CMS</b><p>Personal > Rp500rb · Institution/Event > Rp700rb · UMKM > Rp1jt. CMS tetap capability/add-on, bukan wajib paket baru.</p></article>
+        <article><b>COMMERCE</b><p>QRIS otomatis wajib > Rp2jt. Multi-payment gateway wajib > Rp5jt. MDR, settlement, subscription, dan third-party fee tetap dipisahkan.</p></article>
+        <article><b>COMPANY PROFILE</b><p>Deliverable company profile bisnis formal wajib > Rp1jt. Landing mikro sederhana tetap dapat memakai UMKM Starter.</p></article>
+        <article><b>GOVERNMENT</b><p>Website sektor publik wajib > Rp5jt. Workflow, integration, security, procurement, SLA, atau multi-unit dapat mengarah ke Custom.</p></article>
+      </div></div>`,
+  },
+);
+
 groups.forEach((group) => {
   const items = catalogue.filter((item) => item.group === group.id);
   slides.push(groupDivider(group, items));
@@ -150,7 +172,7 @@ slides.push(
         ${[
           ['Additional normal page','Rp100–250rb+'],['Extra CMS content type','Rp250–500rb+'],['Additional role / permission','Rp300–750rb+'],['Approval workflow','Rp500rb–1,5jt+'],['Payment gateway','Rp750rb–1,5jt+'],['WhatsApp / API','Rp500rb–1,5jt+'],['Shipping integration','Rp750rb–1,5jt+'],['QR + scanner','Rp500rb–1jt'],['Advanced report / export','Rp300rb–1jt+'],['Multi-branch / outlet','Rp1jt+'],['External API','Rp500rb+'],['Data migration / import','Rp500rb+'],['Urgent delivery','+20–50%']
         ].map(([name, price]) => `<article><span>${name}</span><b>${price}</b></article>`).join('')}
-      </div></div>`,
+      </div><footer>Add-on tidak boleh digunakan untuk mengakali pricing floor. Final quotation setelah add-on tetap wajib mematuhi Pricing Guardrails.</footer></div>`,
   },
   {
     type: 'custom-trigger', group: 'framework', dark: true,
@@ -276,6 +298,7 @@ function openDetail(id) {
   ${live ? `<a class="detail-preview" href="${live.url}" target="_blank" rel="noopener"><img src="${live.image}" alt="${esc(live.title)}" /><span>${esc(live.title)} · BUKA WEBSITE ↗</span></a>` : `<div class="detail-example"><span>CONTOH IMPLEMENTASI</span><p>${esc(item.useCase)}</p></div>`}
   <section class="detail-fact"><span>COCOK UNTUK</span><p>${esc(item.audience)}</p></section>
   <section class="detail-fact accent"><span>PEMBEDA UTAMA</span><p>${esc(item.difference)}</p></section>
+  ${item.guardrail ? `<section class="detail-guardrail"><span>PRICING FLOOR · WAJIB</span><p>${esc(item.guardrail)}</p></section>` : ''}
   ${detailSection('Baseline scope', item.baseline, true)}
   ${detailSection('Tidak termasuk baseline', item.excluded)}
   ${detailSection('Optional / add-on', item.optional)}
