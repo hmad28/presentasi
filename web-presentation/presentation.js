@@ -19,6 +19,7 @@ const categoryMeta = [
 ];
 
 const majorLabels = {
+  OVERVIEW: 'OVERVIEW',
   PRESENCE: 'DIGITAL PRESENCE',
   OPERATIONS: 'BUSINESS & OPERATIONS',
   SECTOR: 'CORPORATE & SECTOR',
@@ -92,11 +93,42 @@ function packageSlide(item, meta, packageIndex, packageTotal) {
   };
 }
 
+function tableOfContentsSlide() {
+  let nextPage = 3;
+  const entries = categoryMeta.map((meta, index) => {
+    const packageCount = catalogue.filter((item) => item.kategori === meta.key).length;
+    const startPage = nextPage;
+    nextPage += packageCount + 1;
+    return { ...meta, index: index + 1, packageCount, startPage };
+  });
+
+  return {
+    type: 'toc', major: 'OVERVIEW',
+    html: `<div class="toc-layout">
+      <section class="toc-intro">
+        <span>02 · NAVIGASI UTAMA</span>
+        <h1>Daftar<br>Isi.</h1>
+        <p>Pilih kategori untuk langsung menuju breakdown harga dan paket.</p>
+        <div class="toc-summary"><b>13</b><span>KATEGORI</span><b>64</b><span>PAKET</span></div>
+      </section>
+      <nav class="toc-grid" aria-label="Daftar kategori">
+        ${entries.map((entry) => `<button type="button" data-jump="${entry.startPage - 1}">
+          <span>${String(entry.index).padStart(2, '0')}</span>
+          <strong>${entry.title}</strong>
+          <small>${entry.packageCount} paket</small>
+          <b>HAL. ${String(entry.startPage).padStart(2, '0')} ↗</b>
+        </button>`).join('')}
+      </nav>
+    </div>`,
+  };
+}
+
 const slides = [
   {
-    type: 'cover', major: 'PRESENCE', dark: true,
+    type: 'cover', major: 'OVERVIEW', dark: true,
     html: `<div class="cover-sequential"><span>FINAL INTERNAL MASTER · 2026</span><h1>SATU PAKET.<br><em>SATU HALAMAN.</em></h1><p>64 breakdown harga, benefit, scope, dan contoh proyek.</p></div><div class="cover-count"><b>64</b><span>PAKET<br>LENGKAP</span></div>`,
   },
+  tableOfContentsSlide(),
 ];
 
 categoryMeta.forEach((meta, categoryIndex) => {
@@ -110,7 +142,7 @@ slides.push({
   html: `<div class="closing-sequential"><span>SOLIVATE STUDIO · PRICING MASTER 2026</span><h1>64 paket.<br><em>Tanpa campur.</em><br>Tanpa pengulangan.</h1><p>Benchmark adalah titik awal. Discovery menentukan quotation final.</p><button type="button" data-open-catalogue>BUKA KATALOG PENCARIAN →</button></div>`,
 });
 
-const majorOrder = ['PRESENCE', 'OPERATIONS', 'SECTOR', 'PLATFORM'];
+const majorOrder = ['OVERVIEW', 'PRESENCE', 'OPERATIONS', 'SECTOR', 'PLATFORM'];
 const chapters = majorOrder.map((major, index) => {
   const first = slides.findIndex((slide) => slide.major === major);
   const last = slides.reduce((value, slide, slideIndex) => slide.major === major ? slideIndex : value, first);
@@ -147,6 +179,7 @@ function renderSlide(index, direction = 1) {
 }
 
 function bindSlideActions() {
+  document.querySelectorAll('[data-jump]').forEach((button) => button.addEventListener('click', () => renderSlide(Number(button.dataset.jump))));
   document.querySelectorAll('[data-package]').forEach((button) => button.addEventListener('click', () => openCatalogue(button.dataset.package)));
   document.querySelectorAll('[data-open-catalogue]').forEach((button) => button.addEventListener('click', () => openCatalogue()));
 }

@@ -1,6 +1,6 @@
 # Solivate Studio — Pricing Master 2026
 
-Presentasi web 79 slide berbahasa Indonesia yang disusun dari `Solivate_Studio_Pricing_Master_Final_2026.docx.md`. Alurnya berurutan per kategori: satu halaman pembuka kategori, lalu satu halaman khusus untuk setiap paket. Harga, benefit, pembeda, scope, dan contoh proyek tidak lagi dicampur dalam satu comparison slide.
+Presentasi web 80 slide berbahasa Indonesia yang disusun dari `Solivate_Studio_Pricing_Master_Final_2026.docx.md`. Halaman 02 merupakan daftar isi interaktif. Setelah itu alurnya berurutan per kategori: satu halaman pembuka kategori, lalu satu halaman khusus untuk setiap paket. Harga, benefit, pembeda, scope, dan contoh proyek tidak lagi dicampur dalam satu comparison slide.
 
 Bagian contoh proyek memakai screenshot concept preview 16:9 yang dirender dari deskripsi demo dalam Pricing Master. Visual tersebut bukan screenshot website pihak ketiga dan bukan klaim bahwa demo sudah online; fungsinya untuk membantu sales menggambarkan bentuk produk yang dijual.
 

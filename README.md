@@ -20,7 +20,7 @@
 
 Pricing Master 2026 memosisikan penawaran Solivate sebagai sebuah **product and pricing system**, bukan sekadar daftar harga jasa pembuatan website. Deck ini membantu founder, management, sales, estimator, project lead, dan developer memahami hubungan antara kebutuhan klien, level capability, scope, benchmark harga, dan final quotation.
 
-Versi web dirancang sebagai **sequential pricing catalogue 79 slide**. Setiap kategori memiliki halaman pembuka dan setiap paket memperoleh satu halaman khusus untuk harga, benefit, pembeda, scope, dan contoh proyek—tanpa mencampur beberapa paket dalam satu slide. Seluruh 64 paket dilengkapi screenshot concept preview 16:9 berupa website, dashboard, storefront, atau architecture view sesuai capability-nya.
+Versi web dirancang sebagai **sequential pricing catalogue 80 slide**. Halaman 02 menjadi daftar isi interaktif, setiap kategori memiliki halaman pembuka, dan setiap paket memperoleh satu halaman khusus untuk harga, benefit, pembeda, scope, serta contoh proyek—tanpa mencampur beberapa paket dalam satu slide. Seluruh 64 paket dilengkapi screenshot concept preview 16:9 berupa website, dashboard, storefront, atau architecture view sesuai capability-nya.
 
 ## Fitur utama
 
@@ -70,7 +70,7 @@ Root page akan mengarahkan browser ke deck utama di `/web-presentation/`.
 ├── index.html                      # Entry point GitHub Pages
 ├── web-presentation/
 │   ├── index.html                  # Presentation shell
-│   ├── presentation.js             # Konten 79 slide dan interaksi
+│   ├── presentation.js             # Konten 80 slide dan interaksi
 │   ├── catalogue-data.js            # Data lengkap 64 paket
 │   ├── styles.css                  # Visual system dan responsive layout
 │   └── assets/                     # Logo presentasi
