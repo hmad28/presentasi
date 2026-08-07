@@ -20,14 +20,14 @@
 
 Pricing Master 2026 memosisikan penawaran Solivate sebagai sebuah **product and pricing system**, bukan sekadar daftar harga jasa pembuatan website. Deck ini membantu founder, management, sales, estimator, project lead, dan developer memahami hubungan antara kebutuhan klien, level capability, scope, benchmark harga, dan final quotation.
 
-Versi web dirancang sebagai presentasi layar penuh dengan **83 slide**, navigasi mouse dan keyboard, chapter indicator, progress bar, serta deep link untuk setiap slide.
+Versi web dirancang sebagai presentasi layar penuh dengan **16 slide**, tombol navigasi, kontrol keyboard, indikator bab, progress bar, serta deep link untuk setiap slide.
 
 ## Fitur utama
 
 - Presentasi full-page berformat 16:9 yang berjalan langsung di browser.
-- Klik kanan untuk maju dan klik kiri untuk kembali.
+- Tombol `LANJUT` dan `KEMBALI` untuk berpindah slide.
 - Navigasi keyboard, fullscreen, progress bar, dan chapter navigator.
-- Deep link per slide, misalnya `#slide-57`.
+- Deep link per slide, misalnya `#slide-12`.
 - Katalog capability dari Website, CMS, Business, Operational, hingga Enterprise.
 - Materi pricing engine, discovery workflow, add-on, decision map, demo library, dan governance.
 - Tanpa framework atau proses build untuk versi web.
@@ -36,8 +36,8 @@ Versi web dirancang sebagai presentasi layar penuh dengan **83 slide**, navigasi
 
 | Aksi | Kontrol |
 | --- | --- |
-| Slide berikutnya | Klik kanan, `→`, `Page Down`, `Space`, atau `Enter` |
-| Slide sebelumnya | Klik kiri, `←`, `Page Up`, atau `Backspace` |
+| Slide berikutnya | Tombol `LANJUT`, `→`, `Page Down`, `Space`, atau `Enter` |
+| Slide sebelumnya | Tombol `KEMBALI`, `←`, `Page Up`, atau `Backspace` |
 | Slide pertama / terakhir | `Home` / `End` |
 | Fullscreen | `F` atau tombol `FULLSCREEN` |
 
@@ -66,7 +66,7 @@ Root page akan mengarahkan browser ke deck utama di `/web-presentation/`.
 ├── index.html                      # Entry point GitHub Pages
 ├── web-presentation/
 │   ├── index.html                  # Presentation shell
-│   ├── presentation.js             # Konten 83 slide dan interaksi
+│   ├── presentation.js             # Konten 16 slide dan interaksi
 │   ├── styles.css                  # Visual system dan responsive layout
 │   └── assets/                     # Logo presentasi
 ├── pricing_master_source.md        # Materi sumber Pricing Master 2026

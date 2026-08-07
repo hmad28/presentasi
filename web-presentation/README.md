@@ -1,6 +1,6 @@
 # Solivate Studio — Pricing Master 2026
 
-Presentasi web 83 slide berbahasa Indonesia yang disusun dari `Solivate_Studio_Pricing_Master_Final_2026.docx.md`. Setiap kategori memuat benchmark, cocok untuk, hasil utama, cakupan representatif, demo acuan, dan pembeda capability.
+Presentasi web 16 slide berbahasa Indonesia yang disusun dari `Solivate_Studio_Pricing_Master_Final_2026.docx.md`. Deck diringkas sebagai alur meeting internal: alasan revisi, kerangka harga, katalog kategori, panduan sales, perubahan benchmark, dan strategi demo.
 
 ## Menjalankan presentasi
 
@@ -18,11 +18,11 @@ Kemudian buka:
 
 ## Kontrol
 
-- Klik kanan: slide berikutnya.
-- Klik kiri: slide sebelumnya.
+- Tombol `LANJUT`: slide berikutnya.
+- Tombol `KEMBALI`: slide sebelumnya.
 - `→`, `Page Down`, `Space`, atau `Enter`: berikutnya.
 - `←`, `Page Up`, atau `Backspace`: sebelumnya.
 - `Home` / `End`: awal / akhir.
 - `F`: fullscreen.
 
-Setiap slide juga memiliki deep link seperti `#slide-57`.
+Setiap slide juga memiliki deep link seperti `#slide-12`.
